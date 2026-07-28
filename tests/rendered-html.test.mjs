@@ -21,5 +21,8 @@ test('server renders the leadership research shell', async () => {
   assert.match(html, /媒体与Content Creator/);
   assert.match(html, /项目选地/);
   assert.match(html, /SSL Gold Cup/);
+  assert.match(html, /访问官网|访问官方账号/);
+  assert.match(html, /图片来源/);
+  assert.match(html, /billboard-com-br\.s3|carioca-matsuri-backend|storage-ndt/);
   assert.doesNotMatch(html, /Your site is taking shape|SkeletonPreview/);
 });

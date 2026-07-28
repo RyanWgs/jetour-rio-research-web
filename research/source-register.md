@@ -51,13 +51,13 @@
 ### 活动与节庆
 
 - 官方公开活动视觉：`mondial-biere`、`carioca-matsuri`。
-- 官方页面视觉预览：`rock-the-mountain`、`turandot`、`mariah-christmas`、`classicos-brasil`、`novembro-negro`。
-- 上述页面预览仅用于本地决策研究；公开发布前必须复核主办方图片与页面截图使用许可。
+- 媒体报道所载主办方/活动宣传图：`rock-the-mountain`（Billboard Brasil）、`classicos-brasil`（Correio da Manhã，图片署名 Diego Padilha/Divulgação）。
+- 未取得可靠直接图片地址的候选继续使用纯文字卡片，不使用网页截图服务或通用图库图。
 
 ### 体育与演艺IP
 
-- 官方新闻/机构视觉：`ssl-gold-cup`、`fluminense`。
-- 官方页面视觉预览：`roxy-dinner-show`、`carnaval-experience`、`botafogo`、`flamengo`、`vasco`、`nilton-santos`。
+- 官方新闻/机构视觉：`ssl-gold-cup`、`fluminense`、`roxy-dinner-show`。
+- 未取得可靠直接图片地址的俱乐部和体验项目继续使用纯文字卡片。
 - 俱乐部标识、球员、比赛及场馆画面不自动包含商业使用权。
 
 ### 媒体Logo
@@ -74,6 +74,6 @@
 
 ### 场地
 
-- 官方公开场地视觉：`marina`、`farmasi-arena`、`copacabana-palace`。
-- 官方页面视觉预览：`jockey`、`parque-olimpico`、`aterro-flamengo`、`parque-lage`、`riocentro`、`roxy-venue`、`pier-maua`、`windsor-barra`、`copacabana-beach`、`barra-beach`。
-- 当前全部为外部可追溯视觉；GitHub公开前需要完成许可复核与必要的本地化归档。
+- 官方公开场地视觉：`marina`、`riocentro`、`roxy-venue`、`farmasi-arena`、`windsor-barra`、`copacabana-palace`。
+- 未取得可靠直接图片地址的场地继续使用纯文字卡片。
+- 当前图片全部保留原彩并可追溯到来源页；GitHub公开前需要完成许可复核与必要的本地化归档。

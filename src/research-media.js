@@ -1,16 +1,10 @@
 const checkedAt = '2026-07-28';
-const preview = (url) => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=675`;
 const favicon = (domain) => `https://www.google.com/s2/favicons?domain=${domain}&sz=256`;
 const unavatar = (network, handle) => `https://unavatar.io/${network}/${handle}`;
 
 const visual = (src, alt, kind, sourceLabel, sourceUrl, licenseNote) => ({
   src, alt, kind, sourceLabel, sourceUrl, licenseNote, checkedAt
 });
-
-const officialPreview = (url, alt, sourceLabel) => visual(
-  preview(url), alt, 'photo', sourceLabel, url,
-  '官方页面视觉预览；公开发布前复核页面截图与品牌素材使用许可'
-);
 
 const officialLogo = (domain, alt, sourceLabel, sourceUrl) => visual(
   favicon(domain), alt, 'logo', sourceLabel, sourceUrl,
@@ -23,22 +17,14 @@ const publicAvatar = (network, handle, alt, sourceLabel, sourceUrl) => visual(
 );
 
 export const researchMedia = {
-  'rock-the-mountain': officialPreview('https://www.rockthemountain.com.br/', 'Rock The Mountain 2026官方页面视觉预览', 'Rock The Mountain官方'),
+  'rock-the-mountain': visual('https://billboard-com-br.s3.amazonaws.com/wp-content/uploads/2024/12/10142213/RTM.jpg', 'Rock The Mountain音乐节现场舞台与观众', 'photo', 'Billboard Brasil / Rock The Mountain Divulgação', 'https://billboard.com.br/veja-o-line-up-completo-do-rock-the-mountain-2025/', '媒体报道所载主办方宣传图；公开发布前复核转载许可'),
   'mondial-biere': visual('https://storage-ndt.nyc3.cdn.digitaloceanspaces.com/mondial-de-la-biere/prod/media/assets/Mondial_2025_logo_assinatura_principal_rgb_NyDEIUR.png', 'Mondial de La Bière官方活动视觉', 'photo', 'Mondial de La Bière官方', 'https://www.mondialdelabierebrasil.com/', '官方公开活动视觉；公开发布前复核品牌使用许可'),
   'carioca-matsuri': visual('https://carioca-matsuri-backend.seopro.novadata.dev/assets/50658d90-f9a4-471e-b10e-5309a6427ad4.png?width=1200&height=630&quality=80&format=webp', 'Carioca Matsuri官方活动视觉', 'photo', 'Carioca Matsuri官方', 'https://cariocamatsuri.com.br/', '官方公开活动视觉；公开发布前复核品牌使用许可'),
-  turandot: officialPreview('https://theatromunicipal.rj.gov.br/temporada-2026-do-theatro-municipal-do-rio-de-janeiro/', '里约市立剧院2026《图兰朵》演出季页面', 'Theatro Municipal官方'),
-  'mariah-christmas': officialPreview('https://www.eventim.com.br/campaign/mariahcarey', 'Mariah Carey里约圣诞演出官方票务页面', 'Eventim官方票务'),
-  'classicos-brasil': officialPreview('https://classicosdobrasilfestival.com.br/rio-de-janeiro/', 'Clássicos do Brasil 2026里约站官方页面', 'Clássicos do Brasil官方'),
-  'novembro-negro': officialPreview('https://prefeitura.rio/casa-civil/novembro-negro-rio-entra-no-calendario-oficial-da-cidade/', '里约市政府Novembro Negro官方页面', '里约市政府'),
+  'classicos-brasil': visual('https://www.correiodamanha.com.br/_midias/jpg/2025/10/16/600x378/1_classicos-492377.jpg', 'Clássicos do Brasil音乐节舞台与现场观众', 'photo', 'Correio da Manhã / Diego Padilha Divulgação', 'https://www.correiodamanha.com.br/cultura/musica/2025/10/227571-classicos-do-brasil-em-ritmo-de-rock-e-reggae.html', '媒体报道所载活动宣传图；公开发布前复核转载许可'),
 
   'ssl-gold-cup': visual('https://media.sailing.org/sailing/wp-content/uploads/2023/12/04001300/ssl6-2-e1756900284175-1200x699.jpeg', 'SSL Gold Cup帆船赛事现场', 'photo', 'World Sailing', 'https://www.sailing.org/2025/09/03/second-edition-of-the-football-world-cup-in-sailing-heads-to-brazil-in-november-2026/', 'World Sailing官方新闻图片；公开发布前复核赛事图片使用许可'),
-  'roxy-dinner-show': officialPreview('https://www.roxyoficial.com.br/en/sobre', 'Roxy Dinner Show官方文化演出页面', 'Roxy Dinner Show官方'),
-  'carnaval-experience': officialPreview('https://www.carnavalexperience.com.br/', 'Carnaval Experience与Grande Rio官方体验页面', 'Carnaval Experience官方'),
-  botafogo: officialPreview('https://www.botafogo.com.br/', 'Botafogo俱乐部官方页面', 'Botafogo官方'),
-  flamengo: officialPreview('https://www.flamengo.com.br/', 'Flamengo俱乐部官方页面', 'Flamengo官方'),
+  'roxy-dinner-show': visual('https://www.roxyoficial.com.br/images/galeria/parintins.jpg', 'Roxy Dinner Show舞台演出现场', 'photo', 'Roxy Dinner Show官方', 'https://www.roxyoficial.com.br/en/sobre', '场馆官方公开图片；公开发布前复核使用许可'),
   fluminense: visual('https://assets-fluminense.s3.amazonaws.com/assets/posts_markup-c07c2be3e2639f0f05a3ec91e2155a78ce7e7ffc05bd1da9948015b905439f9a.png', 'Fluminense俱乐部官方视觉', 'photo', 'Fluminense官方', 'https://www.fluminense.com.br/', '俱乐部官方公开视觉；公开发布前复核品牌使用许可'),
-  vasco: officialPreview('https://vasco.com.br/', 'Vasco da Gama俱乐部官方页面', 'Vasco da Gama官方'),
-  'nilton-santos': officialPreview('https://www.botafogo.com.br/estadio-nilton-santos', 'Estádio Nilton Santos官方场馆页面', 'Botafogo官方'),
 
   g1: officialLogo('g1.globo.com', 'g1官方Logo', 'g1官方', 'https://g1.globo.com/rj/rio-de-janeiro/'),
   'o-globo': officialLogo('oglobo.globo.com', 'O Globo官方Logo', 'O Globo官方', 'https://oglobo.globo.com/'),
@@ -71,18 +57,11 @@ export const researchMedia = {
   'gabriel-medina': publicAvatar('instagram', 'gabrielmedina', 'Gabriel Medina公开账号头像', 'Gabriel Medina Instagram', 'https://www.instagram.com/gabrielmedina/'),
 
   marina: visual('https://brmarinas.com.br/wp-content/uploads/2022/10/og-image-br-marinas.png', 'Marina da Glória滨海场地官方视觉', 'photo', 'BR Marinas官方', 'https://marinadagloria.com.br/', '场地官方公开视觉；公开发布前复核使用许可'),
-  jockey: officialPreview('https://www.jcb.com.br/', 'Jockey Club Brasileiro官方场地页面', 'Jockey Club Brasileiro官方'),
-  'parque-olimpico': officialPreview('https://parqueolimpico.rio/', 'Parque Olímpico da Barra官方场地页面', 'Parque Olímpico官方'),
-  'aterro-flamengo': officialPreview('https://visitrio.com.br/', 'Aterro do Flamengo城市活动与场地页面', 'Visit Rio'),
-  'parque-lage': officialPreview('https://eavparquelage.rj.gov.br/', 'Parque Lage官方机构与场地页面', 'Parque Lage官方'),
-  riocentro: officialPreview('https://riocentro.com.br/', 'Riocentro官方场地与空间页面', 'Riocentro官方'),
-  'roxy-venue': officialPreview('https://www.roxyoficial.com.br/en/sobre', 'Roxy Dinner Show官方场地页面', 'Roxy Dinner Show官方'),
+  riocentro: visual('https://riocentro.com.br/wp-content/uploads/2023/04/Raphael-Medeiros-9.jpg', 'Riocentro场馆外部与活动空间', 'photo', 'Riocentro官方', 'https://riocentro.com.br/', '场馆官方公开图片；公开发布前复核使用许可'),
+  'roxy-venue': visual('https://www.roxyoficial.com.br/images/galeria/show-palco.jpg', 'Roxy Dinner Show室内舞台与座席', 'photo', 'Roxy Dinner Show官方', 'https://www.roxyoficial.com.br/en/sobre', '场馆官方公开图片；公开发布前复核使用许可'),
   'farmasi-arena': visual('https://farmasiarena.com.br/wp-content/uploads/2024/01/rioarena.png', 'Farmasi Arena官方场馆视觉', 'photo', 'Farmasi Arena官方', 'https://farmasiarena.com.br/', '场馆官方公开视觉；公开发布前复核使用许可'),
-  'pier-maua': officialPreview('https://piermaua.rio/', 'Pier Mauá港区场地官方页面', 'Pier Mauá官方'),
-  'windsor-barra': officialPreview('https://windsorhoteis.com/hotel/windsor-barra/', 'Windsor Barra会议与酒店官方页面', 'Windsor Hotels官方'),
+  'windsor-barra': visual('https://windsorhoteis.com/media/arquivos/barra_site-principal_JBVpeNQ.jpg', 'Windsor Barra酒店与会议场地', 'photo', 'Windsor Hotels官方', 'https://windsorhoteis.com/hotel/windsor-barra/', '酒店官方公开图片；公开发布前复核使用许可'),
   'copacabana-palace': visual('https://img.belmond.com/f_auto/t_2580x1299/photos/BEL/bel-cam-01-the-arrival01.jpg', 'Copacabana Palace酒店入口与建筑', 'photo', 'Belmond官方', 'https://www.belmond.com/hotels/south-america/brazil/rio-de-janeiro/belmond-copacabana-palace/', '酒店官方公开图片；公开发布前复核使用许可'),
-  'copacabana-beach': officialPreview('https://riotur.rio/que_fazer/copacabana/', 'Copacabana海滩官方旅游页面', 'Riotur官方'),
-  'barra-beach': officialPreview('https://riotur.rio/que_fazer/barra-da-tijuca/', 'Barra da Tijuca海滩官方旅游页面', 'Riotur官方')
 };
 
 export function getResearchMedia(id) {

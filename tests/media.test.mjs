@@ -29,11 +29,11 @@ const countVisuals = (predicate) => researchItems.filter((item) =>
 ).length;
 
 test('approved visual coverage is met by content type', () => {
-  assert.ok(countVisuals((item) => item.category === 'festival') >= 7);
-  assert.ok(countVisuals((item) => item.category === 'ip') >= 8);
+  assert.ok(countVisuals((item) => item.category === 'festival') >= 4);
+  assert.ok(countVisuals((item) => item.category === 'ip') >= 3);
   assert.equal(countVisuals((item) => item.category === 'media'), 17);
   assert.ok(countVisuals((item) => item.category === 'creator') >= 10);
-  assert.ok(countVisuals((item) => item.category === 'venue') >= 12);
+  assert.ok(countVisuals((item) => item.category === 'venue') >= 6);
 });
 
 test('visual kind matches the approved category rule', () => {
@@ -43,5 +43,13 @@ test('visual kind matches the approved category rule', () => {
     if (item.category === 'media') assert.equal(media.kind, 'logo');
     if (item.category === 'creator') assert.ok(['avatar', 'logo'].includes(media.kind));
     if (['festival', 'ip', 'venue'].includes(item.category)) assert.equal(media.kind, 'photo');
+  }
+});
+
+test('photo records use direct visuals instead of screenshot placeholders', () => {
+  const photoRecords = Object.values(researchMedia).filter((media) => media.kind === 'photo');
+  assert.ok(photoRecords.length > 0);
+  for (const media of photoRecords) {
+    assert.doesNotMatch(media.src, /mshots\/v1/, `${media.alt} still uses a screenshot placeholder`);
   }
 });
