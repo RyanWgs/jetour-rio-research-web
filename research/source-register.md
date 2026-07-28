@@ -50,14 +50,17 @@
 
 ### 活动与节庆
 
-- 官方公开活动视觉：`mondial-biere`、`carioca-matsuri`。
-- 媒体报道所载主办方/活动宣传图：`rock-the-mountain`（Billboard Brasil）、`classicos-brasil`（Correio da Manhã，图片署名 Diego Padilha/Divulgação）。
-- 未取得可靠直接图片地址的候选继续使用纯文字卡片，不使用网页截图服务或通用图库图。
+- 官方公开活动视觉：`mondial-biere`、`carioca-matsuri`、`mariah-christmas`、`fla-run`。
+- 场地实景辅助图：`turandot` 使用 Theatro Municipal 建筑照片，并在替代文字和权利备注中明确“非2026制作剧照”。
+- 媒体报道所载主办方/活动宣传图：`rock-the-mountain`（Billboard Brasil）、`classicos-brasil`（Correio da Manhã，Diego Padilha/Divulgação）、`novembro-negro`（O Dia，Divulgação）。
+- 同系列赛事辅助图：`live-21k` 使用2026巴西利亚站现场图，并明确标注“非里约站现场”。
+- 不使用网页截图服务、搜索缩略图、通用图库图或无法识别主体的转载图。
 
 ### 体育与演艺IP
 
-- 官方新闻/机构视觉：`ssl-gold-cup`、`fluminense`、`roxy-dinner-show`。
-- 未取得可靠直接图片地址的俱乐部和体验项目继续使用纯文字卡片。
+- 官方新闻/机构视觉：`ssl-gold-cup`、`fluminense`、`roxy-dinner-show`、`carnaval-experience`、`botafogo`、`futevolei`。
+- Wikimedia Commons授权实景：`nilton-santos`（Cau0709，CC BY-SA 4.0）、`theatro-municipal-ip`（Elvis Boaventura，CC BY 3.0）。
+- `futevolei` 使用2026年7月Copacabana巡回赛官方视觉，仅用于说明IP属性，不代表11月已有官宣赛事。
 - 俱乐部标识、球员、比赛及场馆画面不自动包含商业使用权。
 
 ### 媒体Logo
@@ -68,12 +71,12 @@
 
 ### Content Creator头像/频道标识
 
-- 公开账号头像：`acelerados`、`juliano-barata`、`maria-clara`、`mundo-sem-fim`、`giro-carioca`、`carioquess`、`cazetv`、`gabriel-medina`。
+- 公开账号头像：`acelerados`、`juliano-barata`、`maria-clara`、`mundo-sem-fim`、`giro-carioca`、`carioquess`、`cazetv`、`gabriel-medina`、`pedro-sampaio`。
 - 官方网站/频道标识：`lucas-fontana`、`carioca-nomundo`、`futparodias`。
 - 头像仅用于候选识别；公开发布前须复核肖像权、频道标识及平台展示规范。
 
 ### 场地
 
-- 官方公开场地视觉：`marina`、`riocentro`、`roxy-venue`、`farmasi-arena`、`windsor-barra`、`copacabana-palace`。
-- 未取得可靠直接图片地址的场地继续使用纯文字卡片。
+- 官方公开场地视觉：`marina`、`jockey`、`riocentro`、`roxy-venue`、`farmasi-arena`、`pier-maua`、`windsor-barra`、`copacabana-palace`。
+- Wikimedia Commons授权实景：`parque-olimpico`（Miriam Jeske/Brasil2016.gov.br，CC BY 3.0 BR）、`aterro-flamengo`（Alicia Nijdam，CC BY 2.0）、`parque-lage`（Wilfredor，CC0）、`copacabana-beach`（Gustavo Facci，CC BY-SA 2.0）、`ipanema-beach`（João Thiago da Silva，CC BY-SA 4.0）、`barra-beach`（Barrazine da Barra，CC BY 2.0）、`recreio-beach`（Fwellisch，CC BY-SA 3.0）。
 - 当前图片全部保留原彩并可追溯到来源页；GitHub公开前需要完成许可复核与必要的本地化归档。
