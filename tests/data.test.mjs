@@ -30,3 +30,18 @@ test('site metadata locks the requested November window', () => {
   assert.equal(siteMeta.windowStart, '2026-11-01');
   assert.equal(siteMeta.windowEnd, '2026-11-30');
 });
+
+const count = (category, subcategory) => researchItems.filter((item) =>
+  item.category === category && (!subcategory || item.subcategory === subcategory)
+).length;
+
+test('candidate pool meets agreed minimum coverage', () => {
+  assert.ok(count('festival') >= 8);
+  assert.ok(count('ip') >= 10);
+  assert.ok(count('media', 'mainstream_media') >= 8);
+  assert.ok(count('media', 'industry_media') >= 8);
+  assert.ok(count('creator') >= 12);
+  assert.ok(count('venue', 'outdoor') >= 5);
+  assert.ok(count('venue', 'indoor') >= 6);
+  assert.ok(count('venue', 'beach') >= 4);
+});
