@@ -43,3 +43,37 @@
 - `likely_recurring`：资源全年运营或官方城市日历稳定存在，但2026年11月具体档期仍需锁定。
 - `pending_announcement`：2026年11月赛程、活动或场地空档尚未公开。
 - 所有报价、档期、赞助排他、肖像权、音乐权、车辆进场、许可与安保条件均不在公开研究中作承诺。
+
+## 视觉素材登记（2026-07-28）
+
+视觉素材的逐项 `src`、原始页面、图片类型、替代文字、权利备注和核验日期记录在 `src/research-media.js`，该文件是本地候选版的视觉来源主登记表。
+
+### 活动与节庆
+
+- 官方公开活动视觉：`mondial-biere`、`carioca-matsuri`。
+- 官方页面视觉预览：`rock-the-mountain`、`turandot`、`mariah-christmas`、`classicos-brasil`、`novembro-negro`。
+- 上述页面预览仅用于本地决策研究；公开发布前必须复核主办方图片与页面截图使用许可。
+
+### 体育与演艺IP
+
+- 官方新闻/机构视觉：`ssl-gold-cup`、`fluminense`。
+- 官方页面视觉预览：`roxy-dinner-show`、`carnaval-experience`、`botafogo`、`flamengo`、`vasco`、`nilton-santos`。
+- 俱乐部标识、球员、比赛及场馆画面不自动包含商业使用权。
+
+### 媒体Logo
+
+- 17家主流/行业媒体均使用其官方网站公开图标作为本地识别标识。
+- 图标通过网站域名获取，原始主体链接仍指向对应媒体官网。
+- 公开发布前须遵循各媒体Logo规范，不暗示编辑背书或合作关系。
+
+### Content Creator头像/频道标识
+
+- 公开账号头像：`acelerados`、`juliano-barata`、`maria-clara`、`mundo-sem-fim`、`giro-carioca`、`carioquess`、`cazetv`、`gabriel-medina`。
+- 官方网站/频道标识：`lucas-fontana`、`carioca-nomundo`、`futparodias`。
+- 头像仅用于候选识别；公开发布前须复核肖像权、频道标识及平台展示规范。
+
+### 场地
+
+- 官方公开场地视觉：`marina`、`farmasi-arena`、`copacabana-palace`。
+- 官方页面视觉预览：`jockey`、`parque-olimpico`、`aterro-flamengo`、`parque-lage`、`riocentro`、`roxy-venue`、`pier-maua`、`windsor-barra`、`copacabana-beach`、`barra-beach`。
+- 当前全部为外部可追溯视觉；GitHub公开前需要完成许可复核与必要的本地化归档。

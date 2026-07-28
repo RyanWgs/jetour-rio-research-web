@@ -23,3 +23,25 @@ test('visual records have complete provenance', () => {
     assert.equal(getResearchMedia(id), media);
   }
 });
+
+const countVisuals = (predicate) => researchItems.filter((item) =>
+  predicate(item) && getResearchMedia(item.id)
+).length;
+
+test('approved visual coverage is met by content type', () => {
+  assert.ok(countVisuals((item) => item.category === 'festival') >= 7);
+  assert.ok(countVisuals((item) => item.category === 'ip') >= 8);
+  assert.equal(countVisuals((item) => item.category === 'media'), 17);
+  assert.ok(countVisuals((item) => item.category === 'creator') >= 10);
+  assert.ok(countVisuals((item) => item.category === 'venue') >= 12);
+});
+
+test('visual kind matches the approved category rule', () => {
+  for (const item of researchItems) {
+    const media = getResearchMedia(item.id);
+    if (!media) continue;
+    if (item.category === 'media') assert.equal(media.kind, 'logo');
+    if (item.category === 'creator') assert.ok(['avatar', 'logo'].includes(media.kind));
+    if (['festival', 'ip', 'venue'].includes(item.category)) assert.equal(media.kind, 'photo');
+  }
+});
