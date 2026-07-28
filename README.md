@@ -37,4 +37,7 @@ export PATH='/Users/ryan/.cache/codex-runtimes/codex-primary-runtime/dependencie
 /Users/ryan/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback/pnpm test
 ```
 
-当前仅为本地候选版本。用户确认前不创建 GitHub 仓库、不对外发布。
+## 在线版本
+
+- GitHub 源码：<https://github.com/RyanWgs/jetour-rio-research-web>
+- 正式在线页面通过项目内置的 Sites 托管配置发布。
