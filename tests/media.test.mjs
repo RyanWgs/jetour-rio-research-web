@@ -29,11 +29,11 @@ const countVisuals = (predicate) => researchItems.filter((item) =>
 ).length;
 
 test('approved visual coverage is met by content type', () => {
-  assert.ok(countVisuals((item) => item.category === 'festival') >= 4);
-  assert.ok(countVisuals((item) => item.category === 'ip') >= 3);
+  assert.ok(countVisuals((item) => item.category === 'festival') >= 8);
+  assert.ok(countVisuals((item) => item.category === 'ip') >= 8);
   assert.equal(countVisuals((item) => item.category === 'media'), 17);
-  assert.ok(countVisuals((item) => item.category === 'creator') >= 10);
-  assert.ok(countVisuals((item) => item.category === 'venue') >= 6);
+  assert.ok(countVisuals((item) => item.category === 'creator') >= 12);
+  assert.ok(countVisuals((item) => item.category === 'venue') >= 12);
 });
 
 test('visual kind matches the approved category rule', () => {
