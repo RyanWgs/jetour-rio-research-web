@@ -88,7 +88,7 @@ main { overflow:hidden; }
 .research-card { min-height:430px; padding:25px; display:flex; flex-direction:column; background:#0b0b0b; }
 .research-card.has-media { min-height:620px; }
 .research-image { position:relative; height:210px; margin:-25px -25px 24px; overflow:hidden; background:#141414; border-bottom:1px solid var(--line); }
-.research-image img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .35s ease; }
+.research-image img { width:100%; height:100%; display:block; object-fit:cover; filter:none; transition:transform .35s ease; }
 .research-card:hover .research-image img { transform:scale(1.015); }
 .research-image.logo,.research-image.avatar { display:grid; place-items:center; background:#efefeb; }
 .research-image.logo img,.research-image.avatar img { width:42%; height:42%; object-fit:contain; }

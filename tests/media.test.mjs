@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { researchItems } from '../src/research-data.js';
 import { researchMedia, getResearchMedia } from '../src/research-media.js';
 
@@ -52,4 +53,11 @@ test('photo records use direct visuals instead of screenshot placeholders', () =
   for (const media of photoRecords) {
     assert.doesNotMatch(media.src, /mshots\/v1/, `${media.alt} still uses a screenshot placeholder`);
   }
+});
+
+test('research visuals explicitly preserve their original colour', async () => {
+  const css = await readFile(new URL('../app/globals.css', import.meta.url), 'utf8');
+  const imageRule = css.match(/\.research-image img\s*\{[^}]+\}/)?.[0] || '';
+  assert.match(imageRule, /filter:\s*none/);
+  assert.doesNotMatch(imageRule, /grayscale\s*\(/);
 });
