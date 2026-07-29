@@ -32,9 +32,31 @@ test('bilingual catalog exposes the approved Chinese scope', () => {
 
 test('catalog normalizes geography without changing stable ids', () => {
   const english = getCatalog('en');
-  assert.equal(english.length, researchItems.length);
-  assert.deepEqual(english.map((item) => item.id), researchItems.map((item) => item.id));
+  assert.ok(english.length >= researchItems.length);
+  assert.deepEqual(english.slice(0, researchItems.length).map((item) => item.id), researchItems.map((item) => item.id));
   assert.ok(english.every((item) => item.geography?.country && item.geography?.region));
+});
+
+test('Latin America IP pool meets the approved size and priority-market coverage', () => {
+  const ips = getCatalog('en').filter((item) => item.category === 'ip');
+  assert.ok(ips.length >= 20 && ips.length <= 25, `IP count: ${ips.length}`);
+  const countries = new Set(ips.map((item) => item.geography.country));
+  for (const country of ['Brazil', 'Mexico', 'Argentina', 'Colombia', 'Chile', 'Peru', 'Puerto Rico']) {
+    assert.ok(countries.has(country), country);
+  }
+  assert.ok(ips.some((item) => item.subcategory === 'sports_ip'));
+  assert.ok(ips.some((item) => item.subcategory === 'entertainment_ip'));
+});
+
+test('new Latin America IP records are traceable and decision-ready', () => {
+  const additions = getCatalog('en').filter((item) => item.category === 'ip' && item.scope === 'latin_america');
+  assert.ok(additions.length >= 10);
+  for (const item of additions) {
+    assert.ok(item.introduction.length >= 80, item.id);
+    assert.ok(item.relevance && item.activation && item.risks, item.id);
+    assert.ok(item.sources.length >= 1, item.id);
+    assert.ok(item.sources.every((source) => /^https:\/\//.test(source.url)), item.id);
+  }
 });
 
 test('every item has decision and provenance fields', () => {
