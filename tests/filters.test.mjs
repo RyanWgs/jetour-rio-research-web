@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { filterItems, searchItems, sortItems } from '../src/filters.js';
+import { filterItems, searchItems, sortItems, selectItems } from '../src/filters.js';
 
 const fixtures = [
   { id: 'a', name: 'Alpha', category: 'media', subcategory: 'mainstream_media', dateStatus: 'confirmed', recommendation: 3, influence: { score: 5 }, location: 'Rio' },
@@ -17,4 +17,13 @@ test('search matches name and location case-insensitively', () => {
 
 test('default sorting prioritizes recommendation then influence', () => {
   assert.deepEqual(sortItems(fixtures, 'recommended').map((item) => item.id), ['a', 'b']);
+});
+
+test('favorites combine with category and query filters', () => {
+  const result = selectItems(fixtures, {
+    onlyFavorites: true,
+    favoriteIds: new Set(['a']),
+    query: 'creator'
+  });
+  assert.deepEqual(result.map((item) => item.id), []);
 });

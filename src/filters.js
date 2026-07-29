@@ -26,6 +26,14 @@ export function sortItems(items, mode = 'recommended') {
   return result.sort((a, b) => (b.recommendation || 0) - (a.recommendation || 0) || (b.influence?.score || 0) - (a.influence?.score || 0));
 }
 
+export function filterFavoriteItems(items, favoriteIds = new Set(), onlyFavorites = false) {
+  if (!onlyFavorites) return [...items];
+  return items.filter((item) => favoriteIds.has(item.id));
+}
+
 export function selectItems(items, state = {}) {
-  return sortItems(searchItems(filterItems(items, state), state.query), state.sort);
+  const filtered = filterItems(items, state);
+  const searched = searchItems(filtered, state.query);
+  const favorited = filterFavoriteItems(searched, state.favoriteIds, state.onlyFavorites);
+  return sortItems(favorited, state.sort);
 }
