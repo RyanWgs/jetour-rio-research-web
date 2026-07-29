@@ -4,7 +4,7 @@ import { researchItems, moduleSummaries, siteMeta } from '../src/research-data.j
 import { getCatalog } from '../src/research-catalog.js';
 
 const statuses = new Set(['confirmed', 'likely_recurring', 'pending_announcement']);
-const categories = new Set(['festival', 'ip', 'media', 'creator', 'venue']);
+const categories = new Set(['festival', 'ip', 'media', 'creator', 'venue', 'hotel', 'partnership']);
 const socialPlatforms = ['youtube', 'instagram', 'facebook', 'tiktok'];
 const socialIds = new Set([
   'acelerados', 'lucas-fontana', 'juliano-barata', 'maria-clara',
@@ -26,8 +26,9 @@ test('dataset covers the four requested research modules', () => {
 
 test('bilingual catalog exposes the approved Chinese scope', () => {
   const chinese = getCatalog('zh');
-  assert.equal(chinese.length, researchItems.filter((item) => ['festival', 'venue'].includes(item.category)).length);
-  assert.deepEqual([...new Set(chinese.map((item) => item.category))].sort(), ['festival', 'venue']);
+  assert.deepEqual([...new Set(chinese.map((item) => item.category))].sort(), ['festival', 'hotel', 'partnership', 'venue']);
+  assert.ok(chinese.some((item) => item.category === 'hotel'));
+  assert.ok(chinese.some((item) => item.category === 'partnership'));
 });
 
 test('catalog normalizes geography without changing stable ids', () => {

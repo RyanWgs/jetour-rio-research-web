@@ -1,8 +1,12 @@
 import { researchItems } from './research-data.js';
 import { latinAmericaResearchItems } from './research-data-latam.js';
 import { englishTranslations } from './research-translations-en.js';
+import { hotelResearchItems } from './research-data-hotels.js';
+import { partnershipResearchItems } from './research-data-partnerships.js';
+import { hotelPartnershipEnglishTranslations } from './research-translations-hotel-partnership-en.js';
 
-const rioCategories = new Set(['festival', 'venue']);
+const rioCategories = new Set(['festival', 'venue', 'hotel', 'partnership']);
+const translations = { ...englishTranslations, ...hotelPartnershipEnglishTranslations };
 const influenceLevels = { '极高': 'Very High', '高': 'High', '中高': 'High', '中': 'Medium', '中低': 'Medium-Low', '低': 'Low' };
 const creatorVerticals = {
   'acelerados': 'automotive', 'lucas-fontana': 'automotive', 'juliano-barata': 'automotive', 'maria-clara': 'automotive',
@@ -48,13 +52,20 @@ function localizeItem(item, translation) {
     risks: translation.risks,
     decision: translation.decision,
     tags: translation.tags,
-    sources: item.sources.map((entry) => ({ ...entry, label: translation.sourceLabel, claim: translation.sourceClaim })),
+    sources: item.sources.map((entry) => ({ ...entry, label: translation.sourceLabel || 'Official source', claim: translation.sourceClaim || 'Published resource facts' })),
     socialReach: englishSocialReach(item.socialReach),
+    ...(translation.hotelRole ? { hotelRole: translation.hotelRole } : {}),
+    ...(translation.roomPlan ? { roomPlan: translation.roomPlan } : {}),
+    ...(translation.beachRelationship ? { beachRelationship: translation.beachRelationship } : {}),
+    ...(translation.eventCapability ? { eventCapability: translation.eventCapability } : {}),
+    ...(translation.brandBuildAssessment ? { brandBuildAssessment: translation.brandBuildAssessment } : {}),
+    ...(translation.partnershipCategory ? { partnershipCategory: translation.partnershipCategory } : {}),
+    ...(translation.barterResources ? { barterResources: translation.barterResources } : {}),
   };
 }
 
 export function getCatalog(locale) {
-  const items = [...researchItems, ...latinAmericaResearchItems].map(withGeography);
+  const items = [...researchItems, ...latinAmericaResearchItems, ...hotelResearchItems, ...partnershipResearchItems].map(withGeography);
   if (locale === 'zh') return items.filter((item) => rioCategories.has(item.category));
-  return items.map((item) => localizeItem(item, englishTranslations[item.id]));
+  return items.map((item) => localizeItem(item, translations[item.id]));
 }
