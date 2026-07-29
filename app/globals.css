@@ -42,9 +42,11 @@ main { overflow:hidden; }
 .status-pill.likely_recurring { border-style:dashed; }
 .research-section { padding-bottom:80px; }
 .explorer { border:1px solid var(--line); border-radius:28px; overflow:clip; background:#090909; }
-.module-tabs { position:sticky; top:72px; z-index:20; display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--line); background:rgba(9,9,9,.92); backdrop-filter:blur(20px); }
-.locale-zh .module-tabs { grid-template-columns:repeat(2,1fr); }
+.module-tabs { position:sticky; top:72px; z-index:20; display:grid; border-bottom:1px solid var(--line); background:rgba(9,9,9,.92); backdrop-filter:blur(20px); }
+.locale-en .module-tabs { grid-template-columns:repeat(6,minmax(0,1fr)); }
+.locale-zh .module-tabs { grid-template-columns:repeat(4,minmax(0,1fr)); }
 .module-tabs button { min-height:78px; padding:18px 22px; border:0; border-right:1px solid var(--line); background:transparent; color:#777; text-align:left; cursor:pointer; }
+.locale-en .module-tabs button { padding-inline:16px; font-size:12px; }
 .module-tabs button:last-child { border-right:0; }
 .module-tabs button span { display:block; margin-bottom:7px; font:10px/1 ui-monospace,SFMono-Regular,monospace; }
 .module-tabs button[aria-selected="true"] { background:var(--text); color:#070707; }
@@ -58,6 +60,11 @@ main { overflow:hidden; }
 .filters .search { flex:1 1 260px; }
 .filters label>span { color:#777; font-size:10px; letter-spacing:.06em; }
 .filters input,.filters select { width:100%; height:44px; padding:0 13px; border:1px solid var(--line); border-radius:12px; background:#111; color:var(--text); font-size:12px; }
+.linked-venue-banner { margin:0 44px 24px; padding:16px 18px; display:flex; justify-content:space-between; align-items:center; gap:16px; border:1px solid #454540; border-radius:15px; background:#171714; }
+.linked-venue-banner div { display:grid; gap:5px; }
+.linked-venue-banner span { color:#7e7e78; font-size:9px; letter-spacing:.08em; text-transform:uppercase; }
+.linked-venue-banner strong { font-size:15px; font-weight:560; }
+.linked-venue-banner button { padding:7px 10px; border:1px solid #343430; border-radius:999px; background:#0b0b0b; color:#aaa9a4; font-size:10px; cursor:pointer; }
 .favorites-filter { height:44px; padding:0 14px; display:inline-flex; align-items:center; gap:7px; border:1px solid var(--line); border-radius:12px; background:#111; color:#bdbdb8; white-space:nowrap; cursor:pointer; font-size:11px; }
 .favorites-filter span { font-size:15px; }
 .favorites-filter strong { min-width:19px; padding:3px 5px; border-radius:999px; background:#252525; color:#fff; font-size:9px; }
@@ -95,6 +102,12 @@ main { overflow:hidden; }
 .influence i { grid-column:1/-1; position:relative; display:block; height:2px; background:#292929; }
 .influence i:after { content:""; position:absolute; inset:0 auto 0 0; width:calc(var(--score) * 20%); background:#e9e9e5; }
 .card-copy { color:#aaa9a4; font-size:13px; line-height:1.6; }
+.hotel-card-meta { margin:18px 0; padding:16px; display:grid; grid-template-columns:1fr auto; gap:6px 14px; border:1px solid var(--line); border-radius:14px; background:#101010; }
+.hotel-card-meta>span { color:#777; font-size:9px; }
+.hotel-card-meta>strong { font-size:13px; }
+.hotel-card-meta>a { grid-column:1/-1; margin-top:8px; padding-top:12px; display:flex; justify-content:space-between; align-items:end; border-top:1px solid #292929; }
+.hotel-card-meta>a b { font-size:18px; }
+.hotel-card-meta>a small { color:#777; font-size:9px; }
 .social-reach { margin:24px 0 10px; padding:20px; border:1px solid var(--line); border-radius:16px; background:#101010; }
 .social-reach-head { display:flex; justify-content:space-between; gap:12px; margin-bottom:14px; }
 .social-reach-head strong { font-size:12px; }
@@ -135,6 +148,25 @@ main { overflow:hidden; }
 .dialog-sources { display:flex; flex-wrap:wrap; align-items:center; gap:9px; }
 .dialog-sources>span { width:100%; color:#777; font-size:10px; }
 .dialog-sources a { padding:8px 11px; border:1px solid var(--line); border-radius:9px; font-size:11px; }
+.venue-hotels-cta { width:100%; margin:0 0 32px; padding:18px 20px; display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:14px; border:1px solid #e8e8e2; border-radius:14px; background:#e8e8e2; color:#080808; text-align:left; cursor:pointer; }
+.venue-hotels-cta strong { font-size:22px; }
+.venue-hotels-cta i { font-style:normal; }
+.hotel-facts { margin:30px 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+.hotel-facts>div { min-height:120px; padding:19px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:#111; }
+.hotel-facts>div:nth-child(2n) { border-right:0; }
+.hotel-facts>div:last-child { grid-column:1/-1; border-bottom:0; }
+.hotel-facts span,.hotel-connections>span,.barter-resources>span { color:#777; font-size:9px; letter-spacing:.08em; }
+.hotel-facts strong { display:block; margin-top:13px; font-size:24px; }
+.hotel-facts p { margin:12px 0 0; color:#c5c5bf; font-size:12px; line-height:1.6; }
+.hotel-connections { margin:30px 0; display:grid; gap:8px; }
+.hotel-connections>a { padding:15px 16px; display:grid; grid-template-columns:1fr auto; gap:7px 18px; border:1px solid var(--line); border-radius:12px; background:#101010; }
+.hotel-connections>a strong { font-size:13px; }
+.hotel-connections>a b { font-size:13px; }
+.hotel-connections>a small { grid-column:1/-1; color:#6e6e69; font-size:9px; }
+.traffic-caveat { padding:14px 16px; border-left:2px solid #8e8e87; background:#131313; color:#8e8e88; font-size:10px; line-height:1.55; }
+.barter-resources { margin:30px 0; padding:20px; border:1px solid var(--line); border-radius:16px; background:#101010; }
+.barter-resources>div { margin-top:13px; display:flex; flex-wrap:wrap; gap:7px; }
+.barter-resources b { padding:7px 9px; border:1px solid #363632; border-radius:999px; color:#d0d0ca; font-size:10px; font-weight:500; }
 .rights-note { margin:15px 0 0; color:#777; font-size:10px; line-height:1.55; }
 .dialog-note { margin-top:28px; color:#666; font-size:10px; line-height:1.5; }
 .methodology { padding-bottom:120px; }
@@ -180,13 +212,16 @@ footer { min-height:110px; display:flex; justify-content:space-between; align-it
   .section-heading>div { align-items:start; }
   .section-heading>p { width:auto; margin:18px 0 0 28px; }
   .card-grid,.method-grid { grid-template-columns:1fr; }
-  .module-tabs { top:62px; grid-template-columns:repeat(2,1fr); }
-  .module-tabs button:nth-child(2) { border-right:0; }
-  .module-tabs button:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+  .module-tabs { top:62px; }
+  .locale-en .module-tabs,.locale-zh .module-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .module-tabs button { min-height:66px; padding:13px 14px; border-bottom:1px solid var(--line); }
+  .module-tabs button:nth-child(2n) { border-right:0; }
+  .module-tabs button:nth-last-child(-n+2) { border-bottom:0; }
   .explorer-head { padding:32px 22px 24px; align-items:start; }
   .explorer-head h3 { font-size:30px; }
   .explorer-head>strong { font-size:30px; }
   .filters { padding:0 22px 24px; }
+  .linked-venue-banner { margin:0 22px 22px; align-items:flex-start; }
   .filters label { flex:1 1 calc(50% - 10px); min-width:0; }
   .filters .search { flex-basis:100%; }
   .favorites-filter { flex:1 1 100%; justify-content:center; }
@@ -197,6 +232,11 @@ footer { min-height:110px; display:flex; justify-content:space-between; align-it
   .dialog-inner { padding:34px 24px; }
   .dialog-inner h3 { font-size:34px; }
   .dialog-inner dl div { grid-template-columns:1fr; gap:9px; }
+  .hotel-facts { grid-template-columns:1fr; }
+  .hotel-facts>div,.hotel-facts>div:nth-child(2n) { border-right:0; }
+  .hotel-facts>div:last-child { grid-column:auto; }
+  .hotel-connections>a { grid-template-columns:1fr; }
+  .hotel-connections>a small { grid-column:auto; }
   .social-reach-grid { grid-template-columns:1fr; }
   footer { align-items:flex-start; flex-direction:column; justify-content:center; gap:8px; }
   .language-gate { padding:100px 16px 40px; justify-content:flex-start; }

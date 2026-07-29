@@ -126,6 +126,28 @@ export const researchMedia = {
   'ipanema-beach': visual('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Praia_de_Ipanema_-_Rio_de_Janeiro.jpg/1280px-Praia_de_Ipanema_-_Rio_de_Janeiro.jpg', 'Ipanema Beach海岸全景', 'photo', 'Wikimedia Commons / João Thiago da Silva', 'https://commons.wikimedia.org/wiki/File:Praia_de_Ipanema_-_Rio_de_Janeiro.jpg', 'João Thiago da Silva，CC BY-SA 4.0；如改编须按相同许可发布并保留署名'),
   'barra-beach': visual('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Barra_Panorama.jpg/1280px-Barra_Panorama.jpg', 'Barra da Tijuca海岸线与城区全景', 'photo', 'Wikimedia Commons / Barrazine da Barra', 'https://commons.wikimedia.org/wiki/File:Barra_Panorama.jpg', 'Barrazine da Barra，CC BY 2.0；使用时保留作者、来源与许可链接'),
   'recreio-beach': visual('https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Vista_sob_a_pedra_do_Pontal_visualizando_Praia_do_Recreio.jpg/1280px-Vista_sob_a_pedra_do_Pontal_visualizando_Praia_do_Recreio.jpg', 'Recreio dos Bandeirantes与Pontal两侧海滩全景', 'photo', 'Wikimedia Commons / Fwellisch', 'https://commons.wikimedia.org/wiki/File:Vista_sob_a_pedra_do_Pontal_visualizando_Praia_do_Recreio.jpg', 'Fwellisch，CC BY-SA 3.0；如改编须按相同许可发布并保留署名'),
+
+  'hotel-windsor-barra': visual('https://windsorhoteis.com/media/arquivos/barra_site-principal_JBVpeNQ.jpg', 'Windsor Barra酒店与会议场地', 'photo', 'Windsor Hotels官方', 'https://windsorhoteis.com/hotel/windsor-barra/', '酒店官方公开彩色图片；公开发布前复核使用许可'),
+  'hotel-windsor-oceanico': officialLogo('windsorhoteis.com', 'Windsor Oceanico官方标识', 'Windsor Hotels官方', 'https://windsorhoteis.com/hotel/windsor-oceanico/'),
+  'hotel-grand-hyatt-rio': officialLogo('hyatt.com', 'Grand Hyatt官方标识', 'Grand Hyatt Rio官方', 'https://www.hyatt.com/grand-hyatt/en-US/riogh-grand-hyatt-rio-de-janeiro'),
+  'hotel-hilton-barra': officialLogo('hilton.com', 'Hilton Barra官方标识', 'Hilton Barra官方', 'https://www.hilton.com/en/hotels/rioabhh-hilton-barra-rio-de-janeiro/'),
+  'hotel-hilton-copacabana': officialLogo('hilton.com', 'Hilton Copacabana官方标识', 'Hilton Copacabana官方', 'https://www.hilton.com/en/hotels/riocchh-hilton-rio-de-janeiro-copacabana/'),
+  'hotel-fairmont-rio': officialLogo('fairmont.com', 'Fairmont Rio官方标识', 'Fairmont Rio官方', 'https://www.fairmont.com/en/hotels/rio-de-janeiro/fairmont-rio-de-janeiro-copacabana.html'),
+  'hotel-windsor-excelsior': officialLogo('windsorhoteis.com', 'Windsor Excelsior官方标识', 'Windsor Hotels官方', 'https://windsorhoteis.com/hotel/windsor-excelsior-copacabana/'),
+  'hotel-sheraton-grand-rio': officialLogo('marriott.com', 'Sheraton Grand Rio官方标识', 'Marriott官方', 'https://www.marriott.com/en-us/hotels/riosi-sheraton-grand-rio-hotel-and-resort/overview/'),
+
+  'partner-ifood': officialLogo('ifood.com.br', 'iFood官方标识', 'iFood官方', 'https://institucional.ifood.com.br/'),
+  'partner-ze-delivery': officialLogo('zedelivery.com.br', 'Zé Delivery官方标识', 'Zé Delivery官方', 'https://www.ze.delivery/'),
+  'partner-cacau-show': officialLogo('cacaushow.com.br', 'Cacau Show官方标识', 'Cacau Show官方', 'https://www.cacaushow.com.br/'),
+  'partner-havaianas': officialLogo('havaianas.com.br', 'Havaianas官方标识', 'Havaianas官方', 'https://havaianas.com.br/'),
+  'partner-ntk': officialLogo('nautikalazer.com.br', 'NTK官方标识', 'Grupo Nautika官方', 'https://www.nautikalazer.com.br/'),
+  'partner-decathlon-brasil': officialLogo('decathlon.com.br', 'Decathlon Brasil官方标识', 'Decathlon Brasil官方', 'https://www.decathlon.com.br/'),
+  'partner-centauro': officialLogo('centauro.com.br', 'Centauro官方标识', 'Centauro官方', 'https://www.centauro.com.br/'),
+  'partner-track-field': officialLogo('tfco.com.br', 'Track&Field官方标识', 'Track&Field官方', 'https://www.tfco.com.br/'),
+  'partner-localiza': officialLogo('localiza.com', 'Localiza官方标识', 'Localiza官方', 'https://www.localiza.com/brasil/pt-br'),
+  'partner-azul': officialLogo('voeazul.com.br', 'Azul官方标识', 'Azul官方', 'https://www.voeazul.com.br/'),
+  'partner-gol-smiles': officialLogo('voegol.com.br', 'GOL官方标识', 'GOL官方', 'https://www.voegol.com.br/'),
+  'partner-cvc-corp': officialLogo('cvccorp.com.br', 'CVC Corp官方标识', 'CVC Corp官方', 'https://www.cvccorp.com.br/'),
 };
 
 export function getResearchMedia(id) {
