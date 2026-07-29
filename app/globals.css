@@ -43,8 +43,8 @@ main { overflow:hidden; }
 .research-section { padding-bottom:80px; }
 .explorer { border:1px solid var(--line); border-radius:28px; overflow:clip; background:#090909; }
 .module-tabs { position:sticky; top:72px; z-index:20; display:grid; border-bottom:1px solid var(--line); background:rgba(9,9,9,.92); backdrop-filter:blur(20px); }
-.locale-en .module-tabs { grid-template-columns:repeat(6,minmax(0,1fr)); }
-.locale-zh .module-tabs { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.locale-en .module-tabs { grid-template-columns:repeat(7,minmax(0,1fr)); }
+.locale-zh .module-tabs { grid-template-columns:repeat(5,minmax(0,1fr)); }
 .module-tabs button { min-height:78px; padding:18px 22px; border:0; border-right:1px solid var(--line); background:transparent; color:#777; text-align:left; cursor:pointer; }
 .locale-en .module-tabs button { padding-inline:16px; font-size:12px; }
 .module-tabs button:last-child { border-right:0; }

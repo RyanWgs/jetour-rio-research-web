@@ -63,3 +63,12 @@ test('all approved cases have colour photo records with provenance', () => {
     assert.ok(media.sourceLabel && media.licenseNote, id);
   }
 });
+
+test('case module is described as reference material rather than a November schedule', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const explorer = await readFile(new URL('../app/research-explorer.tsx', import.meta.url), 'utf8');
+  assert.match(explorer, /历史\/运营案例/);
+  assert.match(explorer, /Historical operating case/);
+  assert.match(explorer, /不属于2026年11月活动档期/);
+  assert.match(explorer, /not part of the November 2026 event calendar/);
+});

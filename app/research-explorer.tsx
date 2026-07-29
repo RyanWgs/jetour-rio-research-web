@@ -29,15 +29,17 @@ const modules = {
     { id: 'festival', number: '01', label: '音乐节与本地庆典', eyebrow: 'EVENTS', description: '整个11月值得借势的城市文化与公共活动。' },
     { id: 'venue', number: '02', label: '项目选地', eyebrow: 'VENUES', description: '户外、室内与沙滩三类700人项目场景。' },
     { id: 'hotel', number: '03', label: '酒店配套', eyebrow: 'HOTEL SUPPORT', description: '根据02场地匹配住宿、距离、接驳和品牌落地条件。' },
-    { id: 'partnership', number: '06', label: '异业合作', eyebrow: 'PARTNERSHIPS', description: '餐饮、沙滩户外、运动及旅行品牌合作资源。' },
+    { id: 'beach_case', number: '04', label: '沙滩音乐节案例', eyebrow: 'BEACH FESTIVAL CASES', description: '巴西已发生的沙滩音乐与庆典运营参考；不属于2026年11月活动档期。' },
+    { id: 'partnership', number: '05', label: '异业合作', eyebrow: 'PARTNERSHIPS', description: '餐饮、沙滩户外、运动及旅行品牌合作资源。' },
   ],
   en: [
     { id: 'festival', number: '01', label: 'Events & Local Celebrations', eyebrow: 'EVENTS', description: 'November cultural moments and public events worth aligning with.' },
     { id: 'venue', number: '02', label: 'Venue Options', eyebrow: 'VENUES', description: 'Outdoor, indoor and beach settings for a 700-person programme.' },
     { id: 'hotel', number: '03', label: 'Hotel Support', eyebrow: 'HOTEL SUPPORT', description: 'Hotels matched to each venue with room, distance, transport and build conditions.' },
-    { id: 'ip', number: '04', label: 'Sports & Entertainment IP', eyebrow: 'SPORTS + ENTERTAINMENT', description: 'High-recognition partnership properties across Latin America.' },
-    { id: 'communication', number: '05', label: 'Media & Content Creators', eyebrow: 'MEDIA + CREATORS', description: 'Mainstream, automotive and creator resources across Latin America.' },
-    { id: 'partnership', number: '06', label: 'Cross-industry Partnerships', eyebrow: 'PARTNERSHIPS', description: 'Food, beach, outdoor, sports and travel partners across Brazil.' },
+    { id: 'beach_case', number: '04', label: 'Beach Festival Cases', eyebrow: 'BEACH FESTIVAL CASES', description: 'Brazilian beach music and celebration references; not part of the November 2026 event calendar.' },
+    { id: 'ip', number: '05', label: 'Sports & Entertainment IP', eyebrow: 'SPORTS + ENTERTAINMENT', description: 'High-recognition partnership properties across Latin America.' },
+    { id: 'communication', number: '06', label: 'Media & Content Creators', eyebrow: 'MEDIA + CREATORS', description: 'Mainstream, automotive and creator resources across Latin America.' },
+    { id: 'partnership', number: '07', label: 'Cross-industry Partnerships', eyebrow: 'PARTNERSHIPS', description: 'Food, beach, outdoor, sports and travel partners across Brazil.' },
   ],
 };
 
@@ -45,7 +47,7 @@ const labels = {
   zh: {
     all: '全部', result: '项结果', search: '搜索', searchPlaceholder: '名称、地点、标签…', type: '类型', scene: '场景', status: '日期状态', sort: '排序', country: '国家 / 地区', vertical: '创作者方向',
     allCommunication: '全部传播资源', mainstream_media: '主流媒体', industry_media: '行业媒体', creator: '内容创作者', sports_ip: '体育IP', entertainment_ip: '演艺IP',
-    outdoor: '户外', indoor: '室内', beach: '沙滩', confirmed: '已官宣', likely_recurring: '周期性高概率', pending_announcement: '待官宣',
+    outdoor: '户外', indoor: '室内', beach: '沙滩', confirmed: '已官宣', likely_recurring: '周期性高概率', pending_announcement: '待官宣', historical_case: '历史/运营案例',
     recommended: '推荐优先', influenceSort: '影响力', date: '日期', name: '名称', favorites: '仅看收藏', saved: '已收藏', save: '收藏',
     official: '访问官网 ↗', officialCreator: '访问官方账号 ↗', detail: '查看资源详情', intro: '资源简介', influence: '影响力判断', value: '借势价值', activation: '建议玩法', risks: '风险与前置条件', sources: '公开来源', social: '社媒影响力', checked: '核验于',
     noPublic: '平台暂不公开', notFound: '未确认官方账号', emptySaved: '这里还没有收藏', empty: '没有匹配项', emptySavedCopy: '浏览资源并点击星标，收藏会保存在这台设备上。', emptyCopy: '试试清除搜索词或切换筛选条件。', allCountries: '全部国家 / 地区', allVerticals: '全部创作者方向',
@@ -57,7 +59,7 @@ const labels = {
   en: {
     all: 'All', result: 'results', search: 'Search', searchPlaceholder: 'Name, location or tag…', type: 'Type', scene: 'Setting', status: 'Date status', sort: 'Sort', country: 'Country / Region', vertical: 'Creator vertical',
     allCommunication: 'All communication resources', mainstream_media: 'Mainstream media', industry_media: 'Automotive media', creator: 'Content creators', sports_ip: 'Sports IP', entertainment_ip: 'Entertainment IP',
-    outdoor: 'Outdoor', indoor: 'Indoor', beach: 'Beach', confirmed: 'Confirmed', likely_recurring: 'Likely recurring', pending_announcement: 'Pending announcement',
+    outdoor: 'Outdoor', indoor: 'Indoor', beach: 'Beach', confirmed: 'Confirmed', likely_recurring: 'Likely recurring', pending_announcement: 'Pending announcement', historical_case: 'Historical operating case',
     recommended: 'Recommended', influenceSort: 'Influence', date: 'Date', name: 'Name', favorites: 'Saved only', saved: 'Saved', save: 'Save',
     official: 'Visit official site ↗', officialCreator: 'Visit official account ↗', detail: 'View resource profile', intro: 'Resource profile', influence: 'Influence assessment', value: 'Strategic value', activation: 'Activation ideas', risks: 'Risks and conditions', sources: 'Public sources', social: 'Social reach', checked: 'Checked',
     noPublic: 'Count not public', notFound: 'Official account not confirmed', emptySaved: 'No saved resources yet', empty: 'No matching resources', emptySavedCopy: 'Select the star on any card to save it on this device.', emptyCopy: 'Clear the search or adjust the filters.', allCountries: 'All countries / regions', allVerticals: 'All creator verticals',
@@ -73,7 +75,10 @@ const platformLabel: Record<string, string> = { youtube: 'YouTube', instagram: '
 function dateText(entry: ResearchItem, locale: Locale) {
   if (['hotel', 'partnership'].includes(entry.category)) return `${labels[locale].resourceChecked} ${entry.checkedAt}`;
   if (!entry.dateStart) return labels[locale][entry.dateStatus as keyof typeof labels.zh] || entry.dateStatus;
-  const format = (date: string) => locale === 'zh' ? date.slice(5).replace('-', '.') : new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
+  const historical = entry.category === 'beach_case';
+  const format = (date: string) => locale === 'zh'
+    ? (historical ? date.replaceAll('-', '.') : date.slice(5).replace('-', '.'))
+    : new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', ...(historical ? { year: 'numeric' } : {}), timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
   const end = entry.dateEnd && entry.dateEnd !== entry.dateStart ? ` – ${format(entry.dateEnd)}` : '';
   return `${format(entry.dateStart)}${end}`;
 }
@@ -144,7 +149,7 @@ export function ResearchExplorer({ locale }: { locale: Locale }) {
     if (module === 'hotel' && linkedVenueId) base = hotelsForVenue(base, linkedVenueId);
     if (country !== 'all') base = base.filter((item) => item.geography.country === country);
     if (creatorVertical !== 'all') base = base.filter((item) => item.category === 'creator' && item.creatorVertical === creatorVertical);
-    return selectItems(base, { subcategory, dateStatus: ['hotel', 'partnership'].includes(module) ? 'all' : dateStatus, query, sort, favoriteIds, onlyFavorites });
+    return selectItems(base, { subcategory, dateStatus: ['hotel', 'beach_case', 'partnership'].includes(module) ? 'all' : dateStatus, query, sort, favoriteIds, onlyFavorites });
   }, [moduleItems, module, linkedVenueId, country, creatorVertical, subcategory, dateStatus, query, sort, favoriteIds, onlyFavorites]);
 
   function switchModule(id: string) { setModule(id); setLinkedVenueId(null); setSubcategory('all'); setCreatorVertical('all'); setCountry('all'); setDateStatus('all'); setQuery(''); }
@@ -177,7 +182,7 @@ export function ResearchExplorer({ locale }: { locale: Locale }) {
       {module === 'partnership' && <label><span>{t.partnershipType}</span><select value={subcategory} onChange={(e) => setSubcategory(e.target.value)}><option value="all">{t.all}</option><option value="food_retail">{t.food_retail}</option><option value="beach_lifestyle">{t.beach_lifestyle}</option><option value="outdoor_camping">{t.outdoor_camping}</option><option value="sports_lifestyle">{t.sports_lifestyle}</option><option value="travel_mobility">{t.travel_mobility}</option></select></label>}
       {module === 'communication' && <label><span>{t.vertical}</span><select value={creatorVertical} onChange={(e) => { setCreatorVertical(e.target.value); if (e.target.value !== 'all') setSubcategory('creator'); }}><option value="all">{t.allVerticals}</option><option value="automotive">{t.automotive}</option><option value="travel_lifestyle">{t.travel_lifestyle}</option><option value="sports">{t.sports}</option><option value="entertainment_music">{t.entertainment_music}</option></select></label>}
       {locale === 'en' && countries.length > 1 && <label><span>{t.country}</span><select value={country} onChange={(e) => setCountry(e.target.value)}><option value="all">{t.allCountries}</option>{countries.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>}
-      {!['hotel', 'partnership'].includes(module) && <label><span>{t.status}</span><select value={dateStatus} onChange={(e) => setDateStatus(e.target.value)}><option value="all">{t.all}</option><option value="confirmed">{t.confirmed}</option><option value="likely_recurring">{t.likely_recurring}</option><option value="pending_announcement">{t.pending_announcement}</option></select></label>}
+      {!['hotel', 'beach_case', 'partnership'].includes(module) && <label><span>{t.status}</span><select value={dateStatus} onChange={(e) => setDateStatus(e.target.value)}><option value="all">{t.all}</option><option value="confirmed">{t.confirmed}</option><option value="likely_recurring">{t.likely_recurring}</option><option value="pending_announcement">{t.pending_announcement}</option></select></label>}
       <label><span>{t.sort}</span><select value={sort} onChange={(e) => setSort(e.target.value)}><option value="recommended">{t.recommended}</option><option value="influence">{t.influenceSort}</option><option value="date">{t.date}</option><option value="name">{t.name}</option></select></label>
       <button className={`favorites-filter${onlyFavorites ? ' active' : ''}`} type="button" aria-pressed={onlyFavorites} onClick={() => setOnlyFavorites((value) => !value)}><span>★</span>{t.favorites} <strong>{favoriteIds.size}</strong></button>
     </div>
