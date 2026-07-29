@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { beachFestivalCaseItems } from '../src/research-data-beach-cases.js';
 import { beachFestivalCaseEnglishTranslations } from '../src/research-translations-beach-cases-en.js';
+import { getCatalog } from '../src/research-catalog.js';
+import { getResearchMedia } from '../src/research-media.js';
 
 const expectedIds = [
   'case-tim-music-rio',
@@ -39,5 +41,25 @@ test('all cases have complete English display copy', () => {
       assert.equal(han.test(copy[field]), false, `${item.id}:${field}`);
     }
     assert.ok(copy.tags.every((tag) => !han.test(tag)), item.id);
+  }
+});
+
+test('both localized catalogs expose the case module', () => {
+  for (const locale of ['zh', 'en']) {
+    const cases = getCatalog(locale).filter((item) => item.category === 'beach_case');
+    assert.equal(cases.length, 7, locale);
+    assert.deepEqual(cases.map((item) => item.id), expectedIds, locale);
+  }
+  assert.equal(getCatalog('en').find((item) => item.id === expectedIds[0]).name, 'TIM Music Rio');
+});
+
+test('all approved cases have colour photo records with provenance', () => {
+  for (const id of expectedIds) {
+    const media = getResearchMedia(id);
+    assert.ok(media, id);
+    assert.equal(media.kind, 'photo', id);
+    assert.match(media.src, /^https:\/\//, id);
+    assert.match(media.sourceUrl, /^https:\/\//, id);
+    assert.ok(media.sourceLabel && media.licenseNote, id);
   }
 });

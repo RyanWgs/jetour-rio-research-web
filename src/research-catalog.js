@@ -4,9 +4,11 @@ import { englishTranslations } from './research-translations-en.js';
 import { hotelResearchItems } from './research-data-hotels.js';
 import { partnershipResearchItems } from './research-data-partnerships.js';
 import { hotelPartnershipEnglishTranslations } from './research-translations-hotel-partnership-en.js';
+import { beachFestivalCaseItems } from './research-data-beach-cases.js';
+import { beachFestivalCaseEnglishTranslations } from './research-translations-beach-cases-en.js';
 
-const rioCategories = new Set(['festival', 'venue', 'hotel', 'partnership']);
-const translations = { ...englishTranslations, ...hotelPartnershipEnglishTranslations };
+const rioCategories = new Set(['festival', 'venue', 'hotel', 'beach_case', 'partnership']);
+const translations = { ...englishTranslations, ...hotelPartnershipEnglishTranslations, ...beachFestivalCaseEnglishTranslations };
 const influenceLevels = { '极高': 'Very High', '高': 'High', '中高': 'High', '中': 'Medium', '中低': 'Medium-Low', '低': 'Low' };
 const creatorVerticals = {
   'acelerados': 'automotive', 'lucas-fontana': 'automotive', 'juliano-barata': 'automotive', 'maria-clara': 'automotive',
@@ -65,7 +67,7 @@ function localizeItem(item, translation) {
 }
 
 export function getCatalog(locale) {
-  const items = [...researchItems, ...latinAmericaResearchItems, ...hotelResearchItems, ...partnershipResearchItems].map(withGeography);
+  const items = [...researchItems, ...latinAmericaResearchItems, ...hotelResearchItems, ...beachFestivalCaseItems, ...partnershipResearchItems].map(withGeography);
   if (locale === 'zh') return items.filter((item) => rioCategories.has(item.category));
   return items.map((item) => localizeItem(item, translations[item.id]));
 }
