@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { researchItems, moduleSummaries, siteMeta } from '../src/research-data.js';
+import { getCatalog } from '../src/research-catalog.js';
 
 const statuses = new Set(['confirmed', 'likely_recurring', 'pending_announcement']);
 const categories = new Set(['festival', 'ip', 'media', 'creator', 'venue']);
@@ -21,6 +22,19 @@ test('dataset covers the four requested research modules', () => {
   assert.ok(researchItems.some((item) => item.category === 'creator'));
   assert.ok(researchItems.some((item) => item.category === 'venue'));
   assert.equal(moduleSummaries.length, 4);
+});
+
+test('bilingual catalog exposes the approved Chinese scope', () => {
+  const chinese = getCatalog('zh');
+  assert.equal(chinese.length, researchItems.filter((item) => ['festival', 'venue'].includes(item.category)).length);
+  assert.deepEqual([...new Set(chinese.map((item) => item.category))].sort(), ['festival', 'venue']);
+});
+
+test('catalog normalizes geography without changing stable ids', () => {
+  const english = getCatalog('en');
+  assert.equal(english.length, researchItems.length);
+  assert.deepEqual(english.map((item) => item.id), researchItems.map((item) => item.id));
+  assert.ok(english.every((item) => item.geography?.country && item.geography?.region));
 });
 
 test('every item has decision and provenance fields', () => {
