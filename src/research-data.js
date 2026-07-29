@@ -1,9 +1,9 @@
 export const siteMeta = {
-  title: '捷途国际 2026 里约全球用户节 Research',
-  subtitle: '11月借势资源与项目选址｜领导决策版',
+  title: '11月里约资源调研',
+  subtitle: '2026年11月里约活动、体育与演艺IP、传播资源及项目场地资料库',
   windowStart: '2026-11-01',
   windowEnd: '2026-11-30',
-  checkedAt: '2026-07-28'
+  checkedAt: '2026-07-29'
 };
 
 export const moduleSummaries = [
