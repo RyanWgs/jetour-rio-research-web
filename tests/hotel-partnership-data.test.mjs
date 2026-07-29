@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { hotelResearchItems } from '../src/research-data-hotels.js';
 import { partnershipResearchItems } from '../src/research-data-partnerships.js';
+import { hotelPartnershipEnglishTranslations } from '../src/research-translations-hotel-partnership-en.js';
 
 const venueIds = new Set([
   'marina', 'jockey', 'parque-olimpico', 'aterro-flamengo', 'parque-lage',
@@ -36,5 +37,18 @@ test('partnership pool covers the five approved categories', () => {
     assert.equal(partner.category, 'partnership');
     assert.ok(partner.barterResources.length >= 1, partner.id);
     assert.ok(partner.sources.length >= 1, partner.id);
+  }
+});
+
+test('every new resource has complete English copy', () => {
+  const items = [...hotelResearchItems, ...partnershipResearchItems];
+  const han = /[\u3400-\u9fff]/;
+  for (const item of items) {
+    const translation = hotelPartnershipEnglishTranslations[item.id];
+    assert.ok(translation, item.id);
+    for (const key of ['name', 'location', 'introduction', 'influenceBasis', 'relevance', 'activation', 'risks', 'decision']) {
+      assert.ok(translation[key] && !han.test(translation[key]), `${item.id}:${key}`);
+    }
+    assert.ok(Array.isArray(translation.tags) && translation.tags.every((tag) => !han.test(tag)), item.id);
   }
 });
