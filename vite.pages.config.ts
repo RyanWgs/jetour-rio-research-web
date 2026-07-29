@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  root: path.join(projectRoot, 'pages'),
+  root: path.join(projectRoot, 'github-pages'),
   base: '/jetour-rio-research-web/',
   plugins: [react()],
   resolve: { alias: { '@': projectRoot } },

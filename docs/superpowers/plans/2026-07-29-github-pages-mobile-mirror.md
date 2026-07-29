@@ -23,8 +23,8 @@
 ### Task 1: Static mirror build
 
 **Files:**
-- Create: `pages/index.html`
-- Create: `pages/main.tsx`
+- Create: `github-pages/index.html`
+- Create: `github-pages/main.tsx`
 - Create: `vite.pages.config.ts`
 - Create: `tests/pages-build.test.mjs`
 - Modify: `package.json`
@@ -69,7 +69,7 @@ Expected: FAIL with `ENOENT` for `pages-dist/index.html`.
 
 - [ ] **Step 3: Add the minimal reusable client entry**
 
-Create `pages/index.html`:
+Create `github-pages/index.html`:
 
 ```html
 <!doctype html>
@@ -89,7 +89,7 @@ Create `pages/index.html`:
 </html>
 ```
 
-Create `pages/main.tsx`:
+Create `github-pages/main.tsx`:
 
 ```tsx
 import { StrictMode } from 'react';
@@ -114,7 +114,7 @@ import { defineConfig } from 'vite';
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  root: path.join(projectRoot, 'pages'),
+  root: path.join(projectRoot, 'github-pages'),
   base: '/jetour-rio-research-web/',
   plugins: [react()],
   resolve: { alias: { '@': projectRoot } },
@@ -144,7 +144,7 @@ Expected: build exits 0 and the test passes.
 - [ ] **Step 5: Commit the static mirror build**
 
 ```bash
-git add pages/index.html pages/main.tsx vite.pages.config.ts tests/pages-build.test.mjs package.json
+git add github-pages/index.html github-pages/main.tsx vite.pages.config.ts tests/pages-build.test.mjs package.json
 git commit -m "feat: add static pages mirror build"
 ```
 
