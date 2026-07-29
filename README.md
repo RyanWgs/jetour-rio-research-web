@@ -1,6 +1,6 @@
-# 捷途国际 2026 里约全球用户节 Research
+# 11月里约资源调研
 
-黑底白字、领导决策优先的本地研究网页，覆盖 2026 年 11 月：
+黑底白字、图片保留原彩的交互式资源资料库，覆盖 2026 年 11 月：
 
 1. 里约音乐节与本地庆典
 2. 本地体育与演艺大 IP
@@ -25,7 +25,10 @@ export PATH='/Users/ryan/.cache/codex-runtimes/codex-primary-runtime/dependencie
 - 图片、Logo、头像与来源登记：`src/research-media.js`
 - 关键来源：`research/source-register.md`
 - 研究判断与排除项：`research/research-notes.md`
-- 信息截止：2026-07-28
+- 社媒粉丝量核验登记：`research/social-reach-register.md`
+- 信息截止：2026-07-29
+
+所有资源图片均可点击进入中文“资源详情”。收藏保存在当前设备，可通过“仅看收藏”快速筛选。Content Creator 与适用的体育、演艺人物/IP展示 YouTube、Instagram、Facebook、TikTok 官方账号及已核验粉丝量；无法可靠读取时明确标记为平台暂不公开或未确认官方账号。
 
 图片在黑色界面中保留原彩。有可靠直接来源的活动、IP 和场地显示真实视觉；媒体显示官方 Logo，Content Creator 显示公开头像或频道标识。没有可靠直接图片地址的候选保持纯文字卡片。
 
@@ -41,5 +44,4 @@ export PATH='/Users/ryan/.cache/codex-runtimes/codex-primary-runtime/dependencie
 
 - 国内手机优先（Cloudflare Pages）：<https://jetour-rio-research.pages.dev/>
 - 国内手机备用（GitHub Pages）：<https://ryanwgs.github.io/jetour-rio-research-web/>
-- 原正式页面：<https://jetour-rio-research-2026.ryan19921230.chatgpt.site>
 - GitHub 源码：<https://github.com/RyanWgs/jetour-rio-research-web>
