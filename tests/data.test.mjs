@@ -4,6 +4,15 @@ import { researchItems, moduleSummaries, siteMeta } from '../src/research-data.j
 
 const statuses = new Set(['confirmed', 'likely_recurring', 'pending_announcement']);
 const categories = new Set(['festival', 'ip', 'media', 'creator', 'venue']);
+const socialPlatforms = ['youtube', 'instagram', 'facebook', 'tiktok'];
+const socialIds = new Set([
+  'acelerados', 'lucas-fontana', 'juliano-barata', 'maria-clara',
+  'carioca-nomundo', 'mundo-sem-fim', 'giro-carioca', 'carioquess',
+  'cazetv', 'futparodias', 'gabriel-medina', 'pedro-sampaio', 'samanta-alves',
+  'ssl-gold-cup', 'roxy-dinner-show', 'carnaval-experience', 'botafogo',
+  'flamengo', 'fluminense', 'vasco', 'nilton-santos',
+  'theatro-municipal-ip', 'futevolei'
+]);
 
 test('dataset covers the four requested research modules', () => {
   assert.ok(researchItems.some((item) => item.category === 'festival'));
@@ -44,4 +53,29 @@ test('candidate pool meets agreed minimum coverage', () => {
   assert.ok(count('venue', 'outdoor') >= 5);
   assert.ok(count('venue', 'indoor') >= 6);
   assert.ok(count('venue', 'beach') >= 4);
+});
+
+test('every resource has a decision-ready Chinese introduction', () => {
+  assert.equal(researchItems.length, 64);
+  for (const item of researchItems) {
+    assert.equal(typeof item.introduction, 'string', item.id);
+    assert.ok(item.introduction.length >= 35, item.id);
+    assert.ok(item.introduction.length <= 140, item.id);
+  }
+});
+
+test('creators and sports-entertainment IPs have explicit four-platform snapshots', () => {
+  assert.equal(socialIds.size, 23);
+  for (const item of researchItems.filter((entry) => socialIds.has(entry.id))) {
+    assert.equal(item.socialReach.checkedAt, '2026-07-29', item.id);
+    assert.deepEqual(Object.keys(item.socialReach.platforms).sort(), [...socialPlatforms].sort(), item.id);
+    for (const platform of socialPlatforms) {
+      const account = item.socialReach.platforms[platform];
+      assert.ok(['verified', 'not_found', 'not_public'].includes(account.status), `${item.id}:${platform}`);
+      if (account.status === 'verified') {
+        assert.match(account.url, /^https:\/\//, `${item.id}:${platform}`);
+        assert.ok(account.display && account.raw, `${item.id}:${platform}`);
+      }
+    }
+  }
 });

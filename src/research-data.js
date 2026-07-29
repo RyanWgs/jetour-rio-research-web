@@ -37,7 +37,214 @@ const media = (id, name, subcategory, c) => item('media', subcategory, id, name,
 const creator = (id, name, c) => item('creator', 'creator', id, name, c);
 const venue = (id, name, subcategory, c) => item('venue', subcategory, id, name, c);
 
-export const researchItems = [
+const introductions = {
+  'rock-the-mountain': 'Rock The Mountain 是里约州山地举行的大型户外音乐节，横跨两个周末并设置多舞台演出。它连接年轻、户外与可持续生活方式人群，适合SUV内容和小规模车主体验借势。',
+  'mondial-biere': 'Mondial de La Bière 是里约港区具有规模的精酿啤酒与音乐生活方式活动，聚集大量品牌和成年消费者。它适合欢迎夜、餐饮体验及城市夜生活内容，但必须严格控制酒驾风险。',
+  'carioca-matsuri': 'Carioca Matsuri 是里约具有代表性的亚洲文化节，集合美食、表演、动漫和家庭体验。其跨文化属性能自然连接中国品牌与巴西公众，适合开展文化共创和家庭型用户活动。',
+  turandot: '里约市立剧院的《图兰朵》百年纪念制作，是2026演出季的重要歌剧项目。中国题材与巴西顶级文化场馆的结合具有高端传播价值，适合领导和VIP分组观演。',
+  'mariah-christmas': 'Mariah Carey 圣诞主题演出由全球头部歌手领衔，在里约大型场馆户外区举行。它具备强大众话题与国际传播能力，可作为同期城市热度参照或高预算联动资源。',
+  'classicos-brasil': 'Clássicos do Brasil 是集中呈现巴西经典音乐与代表性艺人的演出品牌，具有本地文化辨识度。它适合把全球用户节与巴西音乐记忆连接起来，形成欢迎演出或内容合作。',
+  'novembro-negro': 'Novembro Negro 是里约在黑人意识月开展的一系列公共文化与社会活动，覆盖历史、艺术和社区议题。它体现城市文化的重要底色，适合做尊重本地语境的文化参访与内容策划。',
+  'live-21k': 'LIVE!21K XP Rio 是面向城市跑者的半程马拉松活动，利用里约滨海道路和大众运动氛围形成参与感。它适合小规模跑团、健康生活方式内容和车队保障场景。',
+  'fla-run': 'FLA RUN 是弗拉门戈俱乐部延伸出的球迷路跑活动，把足球身份与大众健身结合。其本地球迷号召力适合用户跑团和社群内容，但需与俱乐部权益方正式合作。',
+  'ssl-gold-cup': 'SSL Gold Cup 是以国家队为单位的国际帆船赛事，里约湾和Marina da Glória提供鲜明城市画面。它能连接全球用户、海洋运动和国际竞赛叙事，是高价值滨海借势资源。',
+  'roxy-dinner-show': 'Roxy Dinner Show 是科帕卡巴纳的巴西文化餐秀，将餐饮、音乐、舞蹈与舞台制作集中在同一空间。其容量与700人需求高度匹配，适合作为欢迎或闭幕晚宴资源。',
+  'carnaval-experience': 'Carnaval Experience 依托Grande Rio桑巴学校提供幕后参访、服装和舞蹈体验。它让非狂欢节季节的国际来宾仍能接触里约核心文化，适合分组沉浸和内容共创。',
+  botafogo: 'Botafogo 是里约传统足球俱乐部之一，拥有鲜明城市身份、职业赛事和稳定球迷社群。其比赛、训练基地与俱乐部内容可用于足球体验和本地传播，但赛程与商业权益需前置确认。',
+  flamengo: 'Flamengo 是巴西影响力最强的综合体育俱乐部之一，以庞大足球球迷基础连接全国大众。它可带来顶级本地声量和社群参与，但合作预算、排他及赛事版权门槛较高。',
+  fluminense: 'Fluminense 是里约历史悠久的传统足球俱乐部，兼具竞技成绩、城市文化和马拉卡纳叙事。它适合俱乐部参访、球迷互动及品牌内容合作，是高辨识度体育资源。',
+  vasco: 'Vasco da Gama 是具有深厚历史和社会文化影响力的里约足球俱乐部，球迷身份鲜明。其航海传统与全球用户概念具有叙事连接点，可探索比赛、基地或社群合作。',
+  'nilton-santos': 'Estádio Nilton Santos 是里约重要体育与大型演出场馆，也是Botafogo主场。场馆接管可同时承载舞台、看台和品牌体验，但对700人项目可能超配并受赛事演出档期限制。',
+  'theatro-municipal-ip': 'Theatro Municipal do Rio 是巴西最具代表性的歌剧、芭蕾和古典音乐场馆之一，建筑本身也是城市地标。它适合高端文化合作、VIP接待和国际传播画面。',
+  futevolei: '里约州足排球联合会代表这项诞生于巴西海滩文化的标志性运动资源。足排球兼具足球、沙滩和参与感，适合用户挑战、运动员教学和海岸内容共创。',
+  g1: 'g1及g1 Rio 是Globo体系的重要综合新闻与地方资讯平台，覆盖全国和里约大众。它适合发布城市活动、品牌动态及现场新闻内容，是主流传播的基础资源。',
+  'o-globo': 'O Globo 是总部位于里约的巴西主流新闻品牌，在城市公共议题和全国传播中具有较高影响力。它适合高管采访、城市议题和重大活动报道。',
+  'bandnews-rio': 'BandNews FM Rio 是里约本地即时新闻与广播资源，兼具通勤场景和城市事件响应速度。它适合活动预热、现场连线和高管访谈，能够强化本地到场信息。',
+  folha: 'Folha de S.Paulo 是巴西全国性主流新闻媒体，覆盖政治、经济、文化与消费议题。虽然总部不在里约，但其全国影响力适合承接品牌战略和中巴交流层面的报道。',
+  estadao: 'Estadão 是巴西历史悠久的全国性主流媒体，在商业、产业和公共事务领域具有影响力。它适合高管观点、汽车产业和国际合作议题的深度传播。',
+  uol: 'UOL 是巴西大型互联网门户和内容平台，覆盖新闻、体育、娱乐及消费人群。其多频道能力适合把用户节内容分发到大众、体育和汽车等不同兴趣场景。',
+  'veja-rio': 'VEJA RIO 聚焦里约城市生活、餐饮、文化和活动指南，是本地消费与生活方式的重要参考。它适合场地、城市路线和用户体验内容的精准触达。',
+  'diario-rio': 'Diário do Rio 是专注里约城市新闻、公共生活和本地活动的数字媒体。其地域聚焦度适合活动预告、城市合作和现场资讯，是本地传播补充资源。',
+  'o-dia': 'O Dia 是面向里约大众读者的本地新闻品牌，覆盖城市、体育、娱乐和民生内容。它适合扩大活动在普通市民和球迷群体中的可见度。',
+  autoesporte: 'Autoesporte 是Globo体系的巴西头部汽车内容品牌，覆盖电视、网站和数字平台。它适合新车试驾、技术内容和高管采访，是汽车媒体合作的优先资源。',
+  'quatro-rodas': 'Quatro Rodas 是巴西历史悠久的汽车测试与购车决策媒体，在专业评测和消费者信任方面具有积累。它适合深度试驾、技术拆解和产品长期内容。',
+  'motor1-brasil': 'Motor1.com Brasil 是连接巴西与全球网络的汽车资讯平台，兼顾新闻、评测和购车指南。它能把里约现场内容扩散到拉美及国际汽车受众。',
+  'noticias-auto': 'Notícias Automotivas 是聚焦新车、价格和消费搜索的巴西汽车垂直网站。它适合车型信息、试驾和长期搜索内容，为购车人群提供持续可见度。',
+  'auto-plus': 'Auto+ 是覆盖电视、流媒体、网站和社交平台的巴西汽车节目品牌。其视频制作能力适合现场节目、主持人试驾和直播型合作。',
+  flatout: 'FlatOut Brasil 聚焦汽车文化、技术和驾驶体验，在发烧友群体中具有专业辨识度。它适合越野、底盘、品牌历史和长视频等深度内容。',
+  autodata: 'AutoData 是巴西汽车产业B2B新闻、杂志与行业活动平台，连接车企、经销商和供应链。它适合高管专访、产业圆桌及拉美商业议题传播。',
+  autocosmos: 'Autocosmos 是覆盖多个西语拉美市场的汽车内容和购车平台。它能把里约活动素材转化为多国本地化内容，是区域传播的重要资源。',
+  acelerados: 'Acelerados 是由赛车手和汽车主持人组成的巴西头部汽车娱乐内容品牌，兼具专业驾驶和大众娱乐。它适合性能挑战、特别节目和用户现场互动。',
+  'lucas-fontana': 'Lucas Fontana及AutoSuper 面向年轻汽车受众制作改装、性能和挑战内容，节奏鲜明且娱乐性强。它适合SUV场景挑战、短视频和现场主持合作。',
+  'juliano-barata': 'Juliano Barata 是FlatOut体系的重要汽车文化与技术内容人物，擅长长内容和专业解析。其受众重视驾驶和机械细节，适合深度试驾、播客与技术圆桌。',
+  'maria-clara': 'Maria Clara Exposito 是来自里约州的年轻女性汽车与改装创作者，内容连接车库文化和短视频受众。她适合女性车主、改装探访和本地年轻人共创。',
+  'carioca-nomundo': 'Carioca NoMundo 由里约出身的Jayme Drummond运营，聚焦高端旅行、航空和酒店体验。它适合讲述国际用户从抵达到城市探索的完整旅程。',
+  'mundo-sem-fim': 'Mundo Sem Fim 以跨文化旅行和长期在路上的真实记录获得巴西观众关注。其长视频叙事适合海外车主故事、里约周边公路旅行和多集纪录内容。',
+  'giro-carioca': 'Giro da Carioca 聚焦里约地标、社区、美食和城市路线，是具有在地视角的生活方式账号。它适合活动倒计时、路线推荐和现场探访内容。',
+  carioquess: 'Carioquess 关注里约旅游、城市生活和本地活动信息，以实用指南连接到访者与居民。它适合地标打卡、城市路线和活动指南型合作。',
+  cazetv: 'CazéTV及Casimiro Miguel 是巴西年轻体育观众中极具影响力的直播内容IP，并具有鲜明里约身份。它适合足球、幽默、直播和用户互动，但版权与排他成本高。',
+  futparodias: 'FutParódias 把足球、音乐改编和喜剧结合成高传播力内容，在巴西球迷中辨识度突出。它适合主题曲、球迷挑战和舞台共创，但需逐项解决音乐版权。',
+  'gabriel-medina': 'Gabriel Medina 是全球知名的巴西冲浪运动员，兼具竞技成就和海岸生活方式影响力。其形象适合海滩、公路和SUV户外内容，但需核验代言冲突。',
+  'pedro-sampaio': 'Pedro Sampaio 是来自里约的DJ、歌手和制作人，在巴西及拉美年轻受众中具有影响力。其音乐和舞蹈属性适合舞台演出、声音资产及短视频挑战。',
+  'samanta-alves': 'Samanta Alves 以里约地标和passinho舞蹈内容形成鲜明的本地青年形象。她适合把街区、舞蹈和用户参与结合成城市短视频内容。',
+  marina: 'Marina da Glória 是瓜纳巴拉湾边的标志性滨海活动场地，兼具国际帆船和大型音乐活动经验。它提供强里约视觉，但11月同期活动可能带来档期冲突。',
+  jockey: 'Jockey Club Brasileiro 位于Gávea，拥有大草坪、赛马传统和山景城市画面。其空间适合700人、车阵、舞台和试乘体验，是户外主场优选。',
+  'parque-olimpico': 'Parque Olímpico da Barra 是里约奥运遗产和成熟大型活动区域，拥有大尺度硬地及交通集散能力。它适合车阵、试驾和主舞台等功能型车主节场景。',
+  'aterro-flamengo': 'Aterro do Flamengo 是里约标志性滨海公园和大众运动动线，城市画面突出但公共属性强。它更适合跑团、车队路线和拍摄，不宜作为封闭主场。',
+  'parque-lage': 'Parque Lage 位于基督像山脚，历史建筑、庭院与花园构成国际辨识度很高的文化场景。它适合VIP早餐、艺术导览和品牌影像，不适合700人主活动。',
+  riocentro: 'Riocentro 是里约规模与后勤能力最完整的会展综合体之一，拥有展馆、会议中心、酒店和车辆进场条件。它是700人室内主会及雨备的优先选择。',
+  'roxy-venue': 'Roxy Dinner Show 位于科帕卡巴纳，官方资料显示其桌椅容量与700人需求精准匹配。餐饮和巴西文化演出一体化，使其成为大型欢迎或闭幕晚宴优选。',
+  'farmasi-arena': 'Farmasi Arena 是里约大型室内体育与演艺场馆，具备国际演出级舞台和观众服务能力。它可承载高规格开幕或发布，但对700人项目明显超配。',
+  'pier-maua': 'Pier Mauá 仓库群位于里约历史港区，兼具工业空间、城市更新和大型展会氛围。它适合汽车展陈、发布和夜间社交，但需核验各仓库条件。',
+  'windsor-barra': 'Windsor Barra Convention Center 将大型会议、住宿、餐饮和安保集中在同一酒店体系。它适合700人主会和国际团队接待，是执行风险较低的会议型方案。',
+  'copacabana-palace': 'Copacabana Palace 是里约国际知名的历史酒店地标，拥有高端宴会和媒体接待能力。它适合领导、VIP晚宴和红毯采访，但成本和车辆展示空间受限。',
+  'copacabana-beach': 'Copacabana Beach 是全球辨识度最高的里约海滩地标之一，可产生强城市识别和传播画面。它适合轻量日出仪式与内容拍摄，不建议作为700人封闭主场。',
+  'ipanema-beach': 'Ipanema与Arpoador 以日落、冲浪和生活方式闻名，是里约高端海岸形象的重要场景。它适合小规模日落和运动内容，但高峰时段拥挤。',
+  'barra-beach': 'Barra da Tijuca Beach 海岸线较长，并与Barra会展、酒店和大型活动区域相邻。它比核心城区海滩更适合700人分区运动和主会场联动。',
+  'recreio-beach': 'Recreio dos Bandeirantes Beach 相对开阔且运动属性突出，可用于冲浪、沙滩活动和海岸内容。其交通距离和保障成本较高，适合作为功能型备选。'
+};
+
+const social = (platforms) => ({ checkedAt: '2026-07-29', platforms });
+const verified = (url, display, raw) => ({ status: 'verified', url, display, raw });
+const notPublic = (url) => ({ status: 'not_public', ...(url ? { url } : {}) });
+const notFound = () => ({ status: 'not_found' });
+const socialReachById = {
+  acelerados: social({
+    youtube: verified('https://www.youtube.com/@Acelerados', '203万', 'チャンネル登録者数 203万人'),
+    instagram: verified('https://www.instagram.com/acelerados/', '98.3万', '982843 followers'),
+    facebook: notPublic('https://www.facebook.com/acelerados'),
+    tiktok: notPublic('https://www.tiktok.com/@acelerados')
+  }),
+  'lucas-fontana': social({
+    youtube: verified('https://www.youtube.com/@LucasFontanaAS', '42.9万', 'チャンネル登録者数 42.9万人'),
+    instagram: notPublic('https://www.instagram.com/lucas_lmf/'),
+    facebook: notFound(),
+    tiktok: notPublic('https://www.tiktok.com/@lucas_lmf')
+  }),
+  'juliano-barata': social({
+    youtube: verified('https://www.youtube.com/@FlatOutBrasil', '44.2万', 'チャンネル登録者数 44.2万人'),
+    instagram: verified('https://www.instagram.com/julianobarata/', '10.4万', '103868 followers'),
+    facebook: notPublic('https://www.facebook.com/julianobarata'),
+    tiktok: notFound()
+  }),
+  'maria-clara': social({
+    youtube: notFound(),
+    instagram: notPublic('https://www.instagram.com/mariaclaraexposito/'),
+    facebook: notFound(),
+    tiktok: notFound()
+  }),
+  'carioca-nomundo': social({
+    youtube: verified('https://www.youtube.com/@cariocanomundo', '93.8万', 'チャンネル登録者数 93.8万人'),
+    instagram: notFound(),
+    facebook: notFound(),
+    tiktok: notFound()
+  }),
+  'mundo-sem-fim': social({
+    youtube: verified('https://www.youtube.com/@MundoSemFim', '195万', 'チャンネル登録者数 195万人'),
+    instagram: verified('https://www.instagram.com/mundosf/', '54.5万', '544621 followers'),
+    facebook: notPublic('https://www.facebook.com/mundosemfimoficial/'),
+    tiktok: notFound()
+  }),
+  'giro-carioca': social({
+    youtube: notFound(),
+    instagram: verified('https://www.instagram.com/girodacarioca/', '57.4万', '573875 followers'),
+    facebook: notFound(),
+    tiktok: notFound()
+  }),
+  carioquess: social({
+    youtube: notFound(),
+    instagram: verified('https://www.instagram.com/carioquess/', '10.3万', '103246 followers'),
+    facebook: notFound(),
+    tiktok: notFound()
+  }),
+  cazetv: social({
+    youtube: verified('https://www.youtube.com/@CazeTV', '4,120万', 'チャンネル登録者数 4120万人'),
+    instagram: verified('https://www.instagram.com/cazetv/', '2,279万', '22792846 followers'),
+    facebook: notPublic('https://www.facebook.com/cazetv'),
+    tiktok: notPublic('https://www.tiktok.com/@cazetv')
+  }),
+  futparodias: social({
+    youtube: verified('https://www.youtube.com/futparodias', '1,150万', 'チャンネル登録者数 1150万人'),
+    instagram: verified('https://www.instagram.com/futparodias/', '219万', '2193944 followers'),
+    facebook: notPublic('https://www.facebook.com/FutParodias'),
+    tiktok: notPublic('https://www.tiktok.com/@futparodias')
+  }),
+  'gabriel-medina': social({
+    youtube: verified('https://www.youtube.com/@GabrielMedina10', '7.71万', 'チャンネル登録者数 7.71万人'),
+    instagram: notPublic('https://www.instagram.com/gabrielmedina/'),
+    facebook: notPublic('https://www.facebook.com/gabrielmedina'),
+    tiktok: notPublic('https://www.tiktok.com/@gabrielmedina')
+  }),
+  'pedro-sampaio': social({
+    youtube: verified('https://www.youtube.com/@DJPEDROSAMPAIO', '540万', 'チャンネル登録者数 540万人'),
+    instagram: verified('https://www.instagram.com/pedrosampaio/', '765万', '7645930 followers'),
+    facebook: notPublic('https://www.facebook.com/djpedrosampaio'),
+    tiktok: notPublic('https://www.tiktok.com/@pedrosampaio')
+  }),
+  'samanta-alves': social({
+    youtube: notFound(),
+    instagram: verified('https://www.instagram.com/samantaalves/', '783', '783 followers'),
+    facebook: notFound(),
+    tiktok: notFound()
+  }),
+  'ssl-gold-cup': social({
+    youtube: verified('https://www.youtube.com/@Starsailors', '9,970', 'チャンネル登録者数 9970人'),
+    instagram: notPublic('https://www.instagram.com/starsailorsleague/'),
+    facebook: notPublic('https://www.facebook.com/StarSailorsLeague'),
+    tiktok: notFound()
+  }),
+  'roxy-dinner-show': social({
+    youtube: verified('https://www.youtube.com/@RoxyDinnerShow', '92', 'チャンネル登録者数 92人'),
+    instagram: notPublic('https://www.instagram.com/roxydinnershow/'),
+    facebook: notFound(),
+    tiktok: notFound()
+  }),
+  'carnaval-experience': social({
+    youtube: verified('https://www.youtube.com/@carnaval_experience', '189', 'チャンネル登録者数 189人'),
+    instagram: verified('https://www.instagram.com/carnaval_experience/', '1.57万', '15682 followers'),
+    facebook: notPublic('https://www.facebook.com/carnavalexperience'),
+    tiktok: notPublic('https://www.tiktok.com/@carnavalexperience')
+  }),
+  botafogo: social({
+    youtube: verified('https://www.youtube.com/@BotafogoTV', '69.8万', 'チャンネル登録者数 69.8万人'),
+    instagram: notPublic('https://www.instagram.com/botafogo/'),
+    facebook: notPublic('https://www.facebook.com/Botafogo'),
+    tiktok: notPublic('https://www.tiktok.com/@botafogo')
+  }),
+  flamengo: social({
+    youtube: verified('https://www.youtube.com/user/flamengo', '826万', 'チャンネル登録者数 826万人'),
+    instagram: verified('https://www.instagram.com/flamengo/', '2,501万', '25005360 followers'),
+    facebook: notPublic('https://www.facebook.com/FlamengoOficial'),
+    tiktok: notPublic('https://www.tiktok.com/@flamengo')
+  }),
+  fluminense: social({
+    youtube: verified('https://www.youtube.com/fluminensefc', '93.8万', 'チャンネル登録者数 93.8万人'),
+    instagram: notPublic('https://www.instagram.com/fluminensefc/'),
+    facebook: notPublic('https://www.facebook.com/FluminenseFC/'),
+    tiktok: notFound()
+  }),
+  vasco: social({
+    youtube: verified('https://www.youtube.com/vasco', '160万', 'チャンネル登録者数 160万人'),
+    instagram: notPublic('https://www.instagram.com/vascodagama/'),
+    facebook: notPublic('https://www.facebook.com/vascodagama'),
+    tiktok: notPublic('https://www.tiktok.com/@vasco')
+  }),
+  'nilton-santos': social({
+    youtube: notFound(),
+    instagram: notPublic('https://www.instagram.com/estniltonsantos/'),
+    facebook: notFound(),
+    tiktok: notFound()
+  }),
+  'theatro-municipal-ip': social({
+    youtube: verified('https://www.youtube.com/@MunicipalTheatroRJ', '2,340', 'チャンネル登録者数 2340人'),
+    instagram: notPublic('https://www.instagram.com/theatromunicipalrj/'),
+    facebook: notPublic('https://www.facebook.com/Theatro.Municipal.3'),
+    tiktok: notFound()
+  }),
+  futevolei: social({ youtube: notFound(), instagram: notFound(), facebook: notFound(), tiktok: notFound() })
+};
+
+const researchItemsBase = [
   festival('rock-the-mountain', 'Rock The Mountain 2026', {
     subcategory: 'music_festival', dateStatus: 'confirmed', dateStart: '2026-11-01', dateEnd: '2026-11-08', location: 'Itaipava, Petrópolis',
     influence: { level: '高', score: 5, basis: '6天、2个周末、12个舞台；巴西头部音乐阵容与青年户外人群' }, recommendation: 3, decision: '重点借势',
@@ -197,6 +404,12 @@ export const researchItems = [
   venue('barra-beach', 'Barra da Tijuca Beach', 'beach', { dateStatus: 'pending_announcement', location: 'Barra da Tijuca', influence: { level: '高', score: 4, basis: '长海岸线、现代城区与Barra会展/酒店集群相邻' }, recommendation: 3, decision: '沙滩活动首选', relevance: '更适合700人分区、运动体验与Barra主会场联动。', activation: '足排球、沙滩挑战、日出车主活动。', risks: '仍需公共许可、雨备、救生与跨道路交通组织。', tags: ['沙滩活动', 'Barra', '大空间'], sources: [S('Riotur海滩指南', 'https://riotur.rio/wp-content/uploads/2023/05/Rotas-Cariocas-RIO-PRAIAS.pdf', '海滩信息')] }),
   venue('recreio-beach', 'Recreio dos Bandeirantes Beach', 'beach', { dateStatus: 'pending_announcement', location: 'Recreio', influence: { level: '中高', score: 3, basis: '相对开阔、运动属性强，适合更可控的户外内容' }, recommendation: 2, decision: '功能型备选', relevance: '可做冲浪、沙滩运动和SUV海岸线内容。', activation: '小组运动、内容拍摄、车主晨间体验。', risks: '距核心酒店区更远；医疗、救生、交通与雨备成本增加。', tags: ['冲浪', '开阔', '交通距离'], sources: [S('Riotur海滩指南', 'https://riotur.rio/wp-content/uploads/2023/05/Rotas-Cariocas-RIO-PRAIAS.pdf', '海滩信息')] })
 ];
+
+export const researchItems = researchItemsBase.map((entry) => ({
+  ...entry,
+  introduction: introductions[entry.id],
+  ...(socialReachById[entry.id] ? { socialReach: socialReachById[entry.id] } : {})
+}));
 
 export const decisionHighlights = [
   { label: '推荐主会期', value: '11/09–12', note: '当前已知冲突最少' },
