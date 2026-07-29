@@ -33,6 +33,8 @@ test('server renders the rio resource library shell', async () => {
   assert.doesNotMatch(html, /先做四个决定|先做4个决定/);
   assert.doesNotMatch(html, /候选资源<\/span>|决策模块|目标人数/);
   assert.doesNotMatch(html, /查看决策详情/);
+  assert.doesNotMatch(html, /#timeline|11月时间轴|整个11月，一眼看清|2026年11月活动时间轴/);
+  assert.match(html, /section-index">01<\/span><h2>里约四类资源/);
   assert.doesNotMatch(html, /Your site is taking shape|SkeletonPreview/);
 });
 
