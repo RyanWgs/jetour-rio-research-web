@@ -43,7 +43,7 @@ test('interactive resource details and motion styles are present', async () => {
   assert.match(explorer, /locale/);
   assert.match(styles, /prefers-reduced-motion/);
   assert.match(styles, /position:sticky/);
-  assert.match(styles, /html\[lang="en"\] \.library-hero h1/);
+  assert.match(styles, /\.library-hero h1 \{ max-width:100%/);
   assert.match(styles, /\.language-switch \{ flex:none/);
 });
 
