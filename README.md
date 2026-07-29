@@ -39,5 +39,7 @@ export PATH='/Users/ryan/.cache/codex-runtimes/codex-primary-runtime/dependencie
 
 ## 在线版本
 
+- 国内手机优先（Cloudflare Pages）：<https://jetour-rio-research.pages.dev/>
+- 国内手机备用（GitHub Pages）：<https://ryanwgs.github.io/jetour-rio-research-web/>
+- 原正式页面：<https://jetour-rio-research-2026.ryan19921230.chatgpt.site>
 - GitHub 源码：<https://github.com/RyanWgs/jetour-rio-research-web>
-- 正式在线页面通过项目内置的 Sites 托管配置发布。

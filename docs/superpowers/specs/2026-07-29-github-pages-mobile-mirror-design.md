@@ -2,7 +2,7 @@
 
 ## 目标
 
-为现有捷途里约 Research 网站增加一个无需登录、适合国内手机浏览器直接访问的 GitHub Pages 备用地址。现有 `chatgpt.site` 正式地址继续保留，报告内容与交互不做改动。
+为现有捷途里约 Research 网站增加无需登录、适合国内手机浏览器直接访问的静态镜像。Cloudflare Pages 作为手机优先地址，GitHub Pages 作为备用地址；现有 `chatgpt.site` 正式地址继续保留，报告内容与交互不做改动。
 
 ## 已确认问题
 
@@ -12,13 +12,13 @@
 
 ## 方案
 
-在现有公开仓库中增加独立的静态镜像构建与 GitHub Pages 发布流程：
+在现有公开仓库中增加独立的静态镜像构建，并发布到 Cloudflare Pages 与 GitHub Pages：
 
 1. 使用当前生产代码生成完整首屏 HTML 与客户端资源。
 2. 将根路径资源改写为仓库 Pages 子路径，避免 CSS、JavaScript、字体和图标出现 404。
 3. 保留研究页四个模块、筛选、搜索、详情弹窗、图片来源链接和全彩图片规则。
-4. 通过 GitHub Actions 发布到 `RyanWgs.github.io/jetour-rio-research-web/`。
-5. 将新的镜像地址写入仓库首页说明，并设置为领导移动端优先备用链接。
+4. 通过 Cloudflare Pages 发布根路径版本，并通过 GitHub Actions 发布仓库子路径版本。
+5. 将 Cloudflare Pages 设置为领导移动端优先链接，将 GitHub Pages 保留为备用链接。
 
 ## 边界与降级
 
@@ -29,12 +29,12 @@
 
 ## 验收标准
 
-- GitHub Pages 根地址返回 HTTP 200。
+- Cloudflare Pages 与 GitHub Pages 根地址均返回 HTTP 200。
 - iPhone Safari 与 Android Chrome User-Agent 均能获得报告 HTML。
 - 页面能加载 CSS 和 JavaScript，四个研究模块可切换，搜索与详情弹窗可用。
 - 图片保持彩色，来源链接保持可点击。
 - 手机宽度无横向溢出。
-- 至少三个中国大陆网络探测点不再出现现有站点的 Cloudflare 403 拦截页。
+- Cloudflare Pages 至少覆盖中国移动、联通、电信中的两个运营商，且至少三个中国大陆网络探测点返回 HTTP 200。
 - 原有构建、数据与媒体测试全部通过。
 
 ## 发布与回退

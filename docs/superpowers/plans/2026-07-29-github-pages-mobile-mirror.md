@@ -8,6 +8,8 @@
 
 **Tech Stack:** React 19, Vite 8, TypeScript, Node test runner, GitHub Actions, GitHub Pages, Globalping HTTP probes.
 
+> **Execution addendum (2026-07-29):** After the GitHub Pages mirror reached only 5 of 10 mainland-China probes, the user requested the previously stable Cloudflare approach. The same static client now produces a root-path `cloudflare-dist/` build for `https://jetour-rio-research.pages.dev/`; GitHub Pages remains the fallback mirror.
+
 ## Global Constraints
 
 - The existing `chatgpt.site` deployment remains live and unchanged.
