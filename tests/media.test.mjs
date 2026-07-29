@@ -67,3 +67,25 @@ test('research visuals explicitly preserve their original colour', async () => {
 test('every English resource has a visual record', () => {
   for (const item of getCatalog('en')) assert.ok(getResearchMedia(item.id), item.id);
 });
+
+test('hotel and partnership modules use coloured visual records', () => {
+  const catalog = getCatalog('en');
+  const hotels = catalog.filter((item) => item.category === 'hotel');
+  const partners = catalog.filter((item) => item.category === 'partnership');
+
+  assert.equal(hotels.length, 8);
+  assert.equal(partners.length, 12);
+  for (const item of hotels) {
+    const media = getResearchMedia(item.id);
+    assert.ok(media, item.id);
+    assert.ok(['photo', 'logo'].includes(media.kind), item.id);
+  }
+  for (const item of partners) assert.equal(getResearchMedia(item.id)?.kind, 'logo', item.id);
+});
+
+test('module navigation supports four Chinese and six English modules responsively', async () => {
+  const css = await readFile(new URL('../app/globals.css', import.meta.url), 'utf8');
+  assert.match(css, /\.locale-en \.module-tabs\s*\{[^}]*repeat\(6,/s);
+  assert.match(css, /\.locale-zh \.module-tabs\s*\{[^}]*repeat\(4,/s);
+  assert.match(css, /@media \(max-width:700px\)[\s\S]*\.locale-en \.module-tabs,\s*\.locale-zh \.module-tabs\s*\{[^}]*repeat\(2,/s);
+});
