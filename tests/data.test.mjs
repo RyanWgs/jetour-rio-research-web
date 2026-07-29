@@ -84,6 +84,19 @@ test('English creator expansion includes the approved sports and entertainment m
   }
 });
 
+test('every original resource has complete English display copy', () => {
+  const originals = getCatalog('en').slice(0, researchItems.length);
+  const han = /[\u3400-\u9fff]/;
+  for (const item of originals) {
+    for (const field of [item.name, item.introduction, item.influence.level, item.influence.basis, item.relevance, item.activation, item.risks, item.decision]) {
+      assert.equal(typeof field, 'string', `${item.id}:missing field`);
+      assert.equal(han.test(field), false, `${item.id}:${field}`);
+    }
+    assert.ok(item.tags.every((tag) => !han.test(tag)), `${item.id}:tags`);
+    assert.ok(item.sources.every((entry) => !han.test(entry.label) && !han.test(entry.claim)), `${item.id}:sources`);
+  }
+});
+
 test('every item has decision and provenance fields', () => {
   for (const item of researchItems) {
     assert.ok(item.id && item.name);
