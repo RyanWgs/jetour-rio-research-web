@@ -59,6 +59,17 @@ test('new Latin America IP records are traceable and decision-ready', () => {
   }
 });
 
+test('English media pool covers priority Latin America markets and both media types', () => {
+  const media = getCatalog('en').filter((item) => item.category === 'media');
+  assert.ok(media.length >= 23, `Media count: ${media.length}`);
+  const countries = new Set(media.map((item) => item.geography.country));
+  for (const country of ['Mexico', 'Argentina', 'Colombia', 'Chile', 'Peru', 'Latin America']) {
+    assert.ok(countries.has(country), country);
+  }
+  assert.ok(media.some((item) => item.subcategory === 'mainstream_media'));
+  assert.ok(media.some((item) => item.subcategory === 'industry_media'));
+});
+
 test('every item has decision and provenance fields', () => {
   for (const item of researchItems) {
     assert.ok(item.id && item.name);
