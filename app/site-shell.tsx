@@ -91,8 +91,8 @@ function LanguageGate({ onSelect }: { onSelect: (locale: Locale) => void }) {
     <h1>11月里约资源调研</h1>
     <p>选择语言进入对应版本</p>
     <div className="language-options">
-      <button type="button" onClick={() => onSelect('zh')}><span>01</span><strong>中文版</strong><small>活动与项目选地</small><i>进入 ↗</i></button>
-      <button type="button" onClick={() => onSelect('en')}><span>02</span><strong>English Version</strong><small>Four resource modules</small><i>Enter ↗</i></button>
+      <button type="button" onClick={() => onSelect('zh')}><span>01</span><strong>中文版</strong><small>活动、选址、酒店与异业合作</small><i>进入 ↗</i></button>
+      <button type="button" onClick={() => onSelect('en')}><span>02</span><strong>English Version</strong><small>Six resource modules</small><i>Enter ↗</i></button>
     </div>
     <div className="language-gate-foot">RIO DE JANEIRO · NOVEMBER 2026</div>
   </main>;
