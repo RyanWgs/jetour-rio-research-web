@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { researchItems } from '../src/research-data.js';
+import { getCatalog } from '../src/research-catalog.js';
 import { researchMedia, getResearchMedia } from '../src/research-media.js';
 
 const kinds = new Set(['photo', 'logo', 'avatar']);
@@ -15,8 +16,9 @@ test('every card has a valid clickable primary source', () => {
 });
 
 test('visual records have complete provenance', () => {
+  const ids = new Set(getCatalog('en').map((item) => item.id));
   for (const [id, media] of Object.entries(researchMedia)) {
-    assert.ok(researchItems.some((item) => item.id === id));
+    assert.ok(ids.has(id));
     assert.ok(media.src && media.alt && media.sourceLabel && media.sourceUrl);
     assert.ok(kinds.has(media.kind));
     assert.ok(media.licenseNote);
@@ -60,4 +62,8 @@ test('research visuals explicitly preserve their original colour', async () => {
   const imageRule = css.match(/\.research-image img\s*\{[^}]+\}/)?.[0] || '';
   assert.match(imageRule, /filter:\s*none/);
   assert.doesNotMatch(imageRule, /grayscale\s*\(/);
+});
+
+test('every English resource has a visual record', () => {
+  for (const item of getCatalog('en')) assert.ok(getResearchMedia(item.id), item.id);
 });

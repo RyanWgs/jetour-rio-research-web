@@ -15,6 +15,10 @@ const publicAvatar = (network, handle, alt, sourceLabel, sourceUrl) => visual(
   unavatar(network, handle), alt, 'avatar', sourceLabel, sourceUrl,
   '公开账号头像；公开发布前复核肖像、频道标识和平台使用规范'
 );
+const channelAvatar = (src, alt, sourceLabel, sourceUrl) => visual(
+  src, alt, 'avatar', sourceLabel, sourceUrl,
+  'Official public channel avatar; reconfirm portrait, logo and platform usage rights before external publication.'
+);
 
 export const researchMedia = {
   'rock-the-mountain': visual('https://billboard-com-br.s3.amazonaws.com/wp-content/uploads/2024/12/10142213/RTM.jpg', 'Rock The Mountain音乐节现场舞台与观众', 'photo', 'Billboard Brasil / Rock The Mountain Divulgação', 'https://billboard.com.br/veja-o-line-up-completo-do-rock-the-mountain-2025/', '媒体报道所载主办方宣传图；公开发布前复核转载许可'),
@@ -35,6 +39,21 @@ export const researchMedia = {
   'nilton-santos': visual('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Est%C3%A1dio_Ol%C3%ADmpico_Nilton_Santos_-_Engenh%C3%A3o_01.jpg/960px-Est%C3%A1dio_Ol%C3%ADmpico_Nilton_Santos_-_Engenh%C3%A3o_01.jpg', 'Estádio Olímpico Nilton Santos外部入口', 'photo', 'Wikimedia Commons / Cau0709', 'https://commons.wikimedia.org/wiki/File:Est%C3%A1dio_Ol%C3%ADmpico_Nilton_Santos_-_Engenh%C3%A3o_01.jpg', 'Cau0709，CC BY-SA 4.0；如改编须按相同许可发布并保留署名'),
   'theatro-municipal-ip': visual('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Teatro_Municipal_-_panoramio_%284%29.jpg/1280px-Teatro_Municipal_-_panoramio_%284%29.jpg', 'Theatro Municipal do Rio标志性建筑外观', 'photo', 'Wikimedia Commons / Elvis Boaventura', 'https://commons.wikimedia.org/wiki/File:Teatro_Municipal_-_panoramio_(4).jpg', 'Elvis Boaventura，CC BY 3.0；使用时保留作者、来源与许可链接'),
   futevolei: visual('https://static.wixstatic.com/media/5c7eda_4c12f99bb2fc409fbad8f479128486df~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/5c7eda_4c12f99bb2fc409fbad8f479128486df~mv2.png', '2026里约州足排球巡回赛官方活动视觉', 'photo', 'Footvolley Player Association官方', 'https://www.futevolei.org/post/circuito-estadual-de-futev%C3%B4lei-2026', '官方公开赛事视觉；为2026年7月Copacabana站，不代表11月已确定赛事'),
+  flamengo: visual(unavatar('instagram', 'flamengo'), 'Flamengo official profile visual', 'photo', 'Flamengo official account', 'https://www.instagram.com/flamengo/', 'Public official-account visual; clear club marks, player image and commercial usage before publication.'),
+  vasco: visual(unavatar('instagram', 'vascodagama'), 'Vasco da Gama official profile visual', 'photo', 'Vasco da Gama official account', 'https://www.instagram.com/vascodagama/', 'Public official-account visual; clear club marks, player image and commercial usage before publication.'),
+
+  'club-america': channelAvatar('https://yt3.googleusercontent.com/vR1Fv9iSsMhOofugU8VJ4YzmmDCc6McDwN4xz64VML_abA6Rdrt1mHcQCweP8vh4pQIIiNyiwQ=s900-c-k-c0x00ffffff-no-rj', 'Club América official channel visual', 'Club América YouTube', 'https://www.youtube.com/@ClubAmerica'),
+  'chivas-guadalajara': channelAvatar('https://yt3.googleusercontent.com/oES8R5lrE4LvaRyaAlKxRGPAln5GvuVNKPXIN3i-Tao5uPlTIR793s5Rl0iVn20IbjCDMw9Ygg=s900-c-k-c0x00ffffff-no-rj', 'Chivas official channel visual', 'Chivas YouTube', 'https://www.youtube.com/@chivas'),
+  'boca-juniors': publicAvatar('instagram', 'bocajrsoficial', 'Boca Juniors official profile visual', 'Boca Juniors official account', 'https://www.instagram.com/bocajrsoficial/'),
+  'river-plate': channelAvatar('https://yt3.googleusercontent.com/GUx-2y-_FRvDu55cFtK3Dhk1m6NT00AX58ni8ZRejQ1-DZrgZea_Uat4uUPmcDESdYfaaUb-qA=s900-c-k-c0x00ffffff-no-rj', 'River Plate official channel visual', 'River Plate YouTube', 'https://www.youtube.com/@riverplate'),
+  'conmebol-libertadores': channelAvatar('https://yt3.googleusercontent.com/0DETTEDEGDWdfbW7sP_6DPo8Nf2cW7uX8g1Tiiy-HnHs8DEUy8dejrgNWRNz3X1gVWLJOsaY=s900-c-k-c0x00ffffff-no-rj', 'CONMEBOL Libertadores official channel visual', 'CONMEBOL Libertadores YouTube', 'https://www.youtube.com/@Libertadores'),
+  shakira: channelAvatar('https://yt3.googleusercontent.com/FhrbXrCCkXlRFrTlJR6uZMzZO0PvnUoQdqK2b920BF6IjDsScsYwixMcLQHtwDy-CnWAWB0yiD4=s900-c-k-c0x00ffffff-no-rj', 'Shakira official channel portrait', 'Shakira YouTube', 'https://www.youtube.com/@shakira'),
+  'bad-bunny': channelAvatar('https://yt3.googleusercontent.com/Ys37SrZ6B7RUW8_X3YvQet7VCFNnWa5C5PXe09OgIoY9UkTt1GpP_zap1-w2VF5gZcyS5xQmbJs=s900-c-k-c0x00ffffff-no-rj', 'Bad Bunny official channel portrait', 'Bad Bunny YouTube', 'https://www.youtube.com/@BadBunnyPR'),
+  'karol-g': channelAvatar('https://yt3.googleusercontent.com/7HJ-eHVw5sBCXQWKpAg4-o7PcpOuDYVcpFj9ontfbQU_4F_jCL1xaQeAb9Uv2IFhjk-i_xBQhbc=s900-c-k-c0x00ffffff-no-rj', 'Karol G official channel portrait', 'Karol G YouTube', 'https://www.youtube.com/@KarolG'),
+  'j-balvin': channelAvatar('https://yt3.googleusercontent.com/UqJr0qGvZ5xpw2BMCjPEl8_oOp7Y3ttA6ZG2fJspi8jLx6e2GRLiqLjM5dtPB6Gxkc1JFTRXS3Y=s900-c-k-c0x00ffffff-no-rj', 'J Balvin official channel portrait', 'J Balvin YouTube', 'https://www.youtube.com/@jbalvin'),
+  bizarrap: channelAvatar('https://yt3.googleusercontent.com/ytc/AIdro_mNZSMdkc4CTHZ0bqb6QmQ75yTTlM1QZS006aXkyuxZvHs=s900-c-k-c0x00ffffff-no-rj', 'Bizarrap official channel portrait', 'Bizarrap YouTube', 'https://www.youtube.com/@bizarrap'),
+  'mon-laferte': channelAvatar('https://yt3.googleusercontent.com/xqI031rZwvbzp1xsFQ4wwKPMGWbhr23jIC9rRy5BY618As2zj23peBihLGM0AKZDvolKI5ZsCg=s900-c-k-c0x00ffffff-no-rj', 'Mon Laferte official channel portrait', 'Mon Laferte YouTube', 'https://www.youtube.com/@Monlaferte'),
+  'grupo-5': channelAvatar('https://yt3.googleusercontent.com/ytc/AIdro_kNDFoFaFwXK65ZbvoHOnNRwEXJecJ940QkTOvAdSahxro=s900-c-k-c0x00ffffff-no-rj', 'Grupo 5 official channel visual', 'Grupo 5 YouTube', 'https://www.youtube.com/@GRUPO5OFICIAL'),
 
   g1: officialLogo('g1.globo.com', 'g1官方Logo', 'g1官方', 'https://g1.globo.com/rj/rio-de-janeiro/'),
   'o-globo': officialLogo('oglobo.globo.com', 'O Globo官方Logo', 'O Globo官方', 'https://oglobo.globo.com/'),
@@ -53,6 +72,14 @@ export const researchMedia = {
   flatout: officialLogo('flatout.com.br', 'FlatOut Brasil官方Logo', 'FlatOut Brasil官方', 'https://flatout.com.br/'),
   autodata: officialLogo('autodata.com.br', 'AutoData官方Logo', 'AutoData官方', 'https://autodata.com.br/'),
   autocosmos: officialLogo('autocosmos.com.co', 'Autocosmos官方Logo', 'Autocosmos官方', 'https://www.autocosmos.com.co/'),
+  'cnn-en-espanol': officialLogo('cnnespanol.cnn.com', 'CNN en Español official logo', 'CNN en Español', 'https://cnnespanol.cnn.com/'),
+  'el-universal-mexico': officialLogo('eluniversal.com.mx', 'El Universal official logo', 'El Universal', 'https://www.eluniversal.com.mx/'),
+  'clarin-argentina': officialLogo('clarin.com', 'Clarín official logo', 'Clarín', 'https://www.clarin.com/'),
+  'el-tiempo-colombia': officialLogo('eltiempo.com', 'El Tiempo official logo', 'El Tiempo', 'https://www.eltiempo.com/'),
+  'la-tercera-chile': officialLogo('latercera.com', 'La Tercera official logo', 'La Tercera', 'https://www.latercera.com/'),
+  'el-comercio-peru': officialLogo('elcomercio.pe', 'El Comercio official logo', 'El Comercio', 'https://elcomercio.pe/'),
+  'motorpasion-mexico': officialLogo('motorpasion.com.mx', 'Motorpasión México official logo', 'Motorpasión México', 'https://www.motorpasion.com.mx/'),
+  '16-valvulas': officialLogo('16valvulas.com.ar', '16 Válvulas official logo', '16 Válvulas', 'https://www.16valvulas.com.ar/'),
 
   acelerados: publicAvatar('youtube', 'Acelerados', 'Acelerados官方频道头像', 'Acelerados YouTube', 'https://www.youtube.com/@Acelerados'),
   'lucas-fontana': officialLogo('lucasfontana.com.br', 'Lucas Fontana与AutoSuper官方标识', 'Lucas Fontana官方', 'https://lucasfontana.com.br/'),
@@ -66,6 +93,23 @@ export const researchMedia = {
   futparodias: officialLogo('futparodias.com.br', 'FutParódias官方标识', 'FutParódias官方', 'https://www.futparodias.com.br/'),
   'gabriel-medina': publicAvatar('instagram', 'gabrielmedina', 'Gabriel Medina公开账号头像', 'Gabriel Medina Instagram', 'https://www.instagram.com/gabrielmedina/'),
   'pedro-sampaio': publicAvatar('youtube', 'djpedrosampaio', 'Pedro Sampaio官方频道头像', 'Pedro Sampaio YouTube', 'https://www.youtube.com/@djpedrosampaio'),
+  'samanta-alves': publicAvatar('instagram', 'samantaalves', 'Samanta Alves public profile portrait', 'Samanta Alves Instagram', 'https://www.instagram.com/samantaalves/'),
+  'la-gambeta': publicAvatar('instagram', 'lagambeta', 'La Gambeta official profile visual', 'La Gambeta official account', 'https://www.instagram.com/lagambeta/'),
+  werevertumorro: channelAvatar('https://yt3.googleusercontent.com/7JdvcUP5cjoBty8gnzfZfN0NinE3nPGlOgcMVg1Xe4ZK9SnXuG7TthGmtinfhRGYw42QZ1wwdqU=s900-c-k-c0x00ffffff-no-rj', 'Werevertumorro official channel portrait', 'Werevertumorro YouTube', 'https://www.youtube.com/@werevertumorro'),
+  'davoo-xeneize': channelAvatar('https://yt3.googleusercontent.com/Ez5fvAqI1iYqqs7ox-2b08OXv5EFqI9j8eCBiBHRIZbfjrAp0GdynhpAd0OTyyndXKnouHwu=s900-c-k-c0x00ffffff-no-rj', 'Davoo Xeneize official channel portrait', 'Davoo Xeneize YouTube', 'https://www.youtube.com/@davooxeneizetwitch'),
+  'jero-freixas': channelAvatar('https://yt3.googleusercontent.com/p-COaBHzAUESAo3ZrtiNsFsukslvf9Xk7VqPqjKMqDfQTATT4rYauVGWEjMhcbk451NEebxC=s900-c-k-c0x00ffffff-no-rj', 'Jero Freixas official channel portrait', 'Jero Freixas YouTube', 'https://www.youtube.com/@jerofreixas'),
+  'morena-beltran': publicAvatar('instagram', 'morenabeltran10', 'Morena Beltrán official profile portrait', 'Morena Beltrán official account', 'https://www.instagram.com/morenabeltran10/'),
+  'pablo-giralt': channelAvatar('https://yt3.googleusercontent.com/ytc/AIdro_mv7CCmDsbxFB-UkqwDnegGtnRi7IiSuV5JVoZ4qw8=s900-c-k-c0x00ffffff-no-rj', 'Pablo Giralt official channel portrait', 'Pablo Giralt YouTube', 'https://www.youtube.com/@PabloGiralt'),
+  'juan-guarnizo': channelAvatar('https://yt3.googleusercontent.com/ytc/AIdro_l75Xm2K5ApSmRlU1Q3R-uzuo6FanGaW0TyXgi-T0OqgA8=s900-c-k-c0x00ffffff-no-rj', 'Juan Guarnizo official channel portrait', 'Juan Guarnizo YouTube', 'https://www.youtube.com/@JuanSGuarnizo'),
+  'la-cobra': channelAvatar('https://yt3.googleusercontent.com/B6cl4EiNfm5mq4fZ7IPOyhLCrCpIe6ZkpxbleRnFNUV-0-hGnLjhg2a2H_8GI0wYYR1mQ-bHytI=s900-c-k-c0x00ffffff-no-rj', 'La Cobra official channel portrait', 'La Cobra YouTube', 'https://www.youtube.com/@lacobraaa'),
+  moluscotv: channelAvatar('https://yt3.googleusercontent.com/V3eC6ypmnikq7QuMwTbfC0ObD8O4rp9oeZflFAOKZKhSM9HDB6roV6FAkHNwok07ND4xYu6P=s900-c-k-c0x00ffffff-no-rj', 'MoluscoTV official channel visual', 'MoluscoTV YouTube', 'https://www.youtube.com/@MoluscoTV'),
+  'chente-ydrach': channelAvatar('https://yt3.googleusercontent.com/H_efAYI7bjxe1QivxnR_nZ3B6Xfbk3Yb4tLNhKp0FbmzeN1x1OQkF6N3ZbtRR1J4YaKNuy6kXg=s900-c-k-c0x00ffffff-no-rj', 'Chente Ydrach official channel portrait', 'Chente Ydrach YouTube', 'https://www.youtube.com/@chenteydrach'),
+  alofoke: channelAvatar('https://yt3.googleusercontent.com/axNxNIuEwEv55qZbzWVMA73bjIZCslXH7Kn-_ElHs-B-N4j6Mvv-mirh6GlaygmZXnO51NzjAQ=s900-c-k-c0x00ffffff-no-rj', 'Alofoke Radio Show official channel visual', 'Alofoke YouTube', 'https://www.youtube.com/@AlofokeRadioShow'),
+  'pepe-garza': publicAvatar('instagram', 'pepegarza', 'Pepe Garza official profile portrait', 'Pepe Garza official account', 'https://www.instagram.com/pepegarza/'),
+  'la-divaza': channelAvatar('https://yt3.googleusercontent.com/WO-dNMxbo-oEYn41sYIcwHE_vb40t90NmNnypRARIhSLpRLJhqgV-kk67_RpGqKzgoOu2P2PRw=s900-c-k-c0x00ffffff-no-rj', 'La Divaza official channel portrait', 'La Divaza YouTube', 'https://www.youtube.com/@LaDivaza'),
+  'calle-y-poche': channelAvatar('https://yt3.googleusercontent.com/hWuMOmeibeNEZr2POvRjr2ddXGZZrkWdeuGcZ5A8d-DYYD1-Z6q1-GKQH7EuA-BnS7hjBBKS=s900-c-k-c0x00ffffff-no-rj', 'Calle y Poché official channel portrait', 'Calle y Poché YouTube', 'https://www.youtube.com/@CallePoche'),
+  'escorpion-dorado': publicAvatar('instagram', 'goldenescorpion', 'Escorpión Dorado official profile portrait', 'Escorpión Dorado official account', 'https://www.instagram.com/goldenescorpion/'),
+  'kenia-os': channelAvatar('https://yt3.googleusercontent.com/6MaoPWdsVT5Rt4Z2QYUBJcfUDMIq2tTVRGYGdpdXY_FNcFM0YZJ5BxjkwNfb898MmBRvpkjn1A=s900-c-k-c0x00ffffff-no-rj', 'Kenia OS official channel portrait', 'Kenia OS YouTube', 'https://www.youtube.com/@KeniaOS'),
 
   marina: visual('https://brmarinas.com.br/wp-content/uploads/2022/10/og-image-br-marinas.png', 'Marina da Glória滨海场地官方视觉', 'photo', 'BR Marinas官方', 'https://marinadagloria.com.br/', '场地官方公开视觉；公开发布前复核使用许可'),
   jockey: visual('https://www.jcb.com.br/jcb_home/images/boas_vindas_bg_1.jpg', 'Jockey Club Brasileiro赛道、草坪与里约山景', 'photo', 'Jockey Club Brasileiro官方', 'https://www.jcb.com.br/', '场地官方公开图片；公开发布前复核使用许可'),

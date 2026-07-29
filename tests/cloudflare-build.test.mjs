@@ -13,3 +13,8 @@ test('Cloudflare Pages build emits root-relative assets', async () => {
     await access(new URL(`../cloudflare-dist/${asset}`, import.meta.url));
   }
 });
+
+test('Cloudflare Pages supports direct bilingual route refreshes', async () => {
+  const redirects = await readFile(new URL('../cloudflare-dist/_redirects', import.meta.url), 'utf8');
+  assert.match(redirects, /\/\*\s+\/index\.html\s+200/);
+});
