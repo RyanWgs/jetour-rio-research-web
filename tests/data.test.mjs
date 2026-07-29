@@ -70,6 +70,20 @@ test('English media pool covers priority Latin America markets and both media ty
   assert.ok(media.some((item) => item.subcategory === 'industry_media'));
 });
 
+test('English creator expansion includes the approved sports and entertainment mix', () => {
+  const english = getCatalog('en');
+  const communications = english.filter((item) => ['media', 'creator'].includes(item.category));
+  assert.ok(communications.length >= 45 && communications.length <= 55, `Media + creator count: ${communications.length}`);
+  const additions = english.filter((item) => item.category === 'creator' && item.scope === 'latin_america');
+  assert.equal(additions.filter((item) => item.creatorVertical === 'sports').length, 8);
+  assert.equal(additions.filter((item) => item.creatorVertical === 'entertainment_music').length, 8);
+  for (const item of additions) {
+    assert.equal(item.socialReach.checkedAt, '2026-07-29', item.id);
+    assert.deepEqual(Object.keys(item.socialReach.platforms).sort(), [...socialPlatforms].sort(), item.id);
+    assert.ok(item.sources.length >= 1, item.id);
+  }
+});
+
 test('every item has decision and provenance fields', () => {
   for (const item of researchItems) {
     assert.ok(item.id && item.name);
