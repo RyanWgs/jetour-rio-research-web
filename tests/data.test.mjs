@@ -88,7 +88,7 @@ test('every original resource has complete English display copy', () => {
   const originals = getCatalog('en').slice(0, researchItems.length);
   const han = /[\u3400-\u9fff]/;
   for (const item of originals) {
-    for (const field of [item.name, item.introduction, item.influence.level, item.influence.basis, item.relevance, item.activation, item.risks, item.decision]) {
+    for (const field of [item.name, item.location, item.introduction, item.influence.level, item.influence.basis, item.relevance, item.activation, item.risks, item.decision]) {
       assert.equal(typeof field, 'string', `${item.id}:missing field`);
       assert.equal(han.test(field), false, `${item.id}:${field}`);
     }

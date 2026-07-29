@@ -40,6 +40,7 @@ function localizeItem(item, translation) {
   return {
     ...item,
     name: translation.name,
+    location: translation.location || item.location,
     introduction: translation.introduction,
     influence: { ...item.influence, level: influenceLevels[item.influence.level] || item.influence.level, basis: translation.influenceBasis },
     relevance: translation.relevance,

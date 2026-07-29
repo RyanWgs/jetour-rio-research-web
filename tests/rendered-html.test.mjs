@@ -17,24 +17,13 @@ test('server renders the rio resource library shell', async () => {
   const html = await response.text();
   assert.match(html, /捷途国际/);
   assert.match(html, /11月里约资源调研/);
-  assert.match(html, /里约四类资源/);
-  assert.match(html, /音乐节与本地庆典/);
-  assert.match(html, /体育与演艺大IP/);
-  assert.match(html, /媒体与Content Creator/);
-  assert.match(html, /项目选地/);
-  assert.match(html, /Rock The Mountain/);
-  assert.match(html, /访问官网|访问官方账号/);
-  assert.match(html, /图片来源/);
-  assert.match(html, /查看资源详情/);
-  assert.match(html, /点击查看资源详情/);
-  assert.match(html, /仅看收藏/);
-  assert.match(html, /收藏/);
-  assert.match(html, /billboard-com-br\.s3|carioca-matsuri-backend|storage-ndt/);
+  assert.match(html, /选择语言/);
+  assert.match(html, /中文版/);
+  assert.match(html, /English Version/);
   assert.doesNotMatch(html, /先做四个决定|先做4个决定/);
   assert.doesNotMatch(html, /候选资源<\/span>|决策模块|目标人数/);
   assert.doesNotMatch(html, /查看决策详情/);
   assert.doesNotMatch(html, /#timeline|11月时间轴|整个11月，一眼看清|2026年11月活动时间轴/);
-  assert.match(html, /section-index">01<\/span><h2>里约四类资源/);
   assert.doesNotMatch(html, /Your site is taking shape|SkeletonPreview/);
 });
 
@@ -49,6 +38,17 @@ test('interactive resource details and motion styles are present', async () => {
   assert.match(explorer, /Facebook/);
   assert.match(explorer, /TikTok/);
   assert.match(explorer, /localStorage/);
+  assert.match(explorer, /geography/);
+  assert.match(explorer, /creatorVertical/);
+  assert.match(explorer, /locale/);
   assert.match(styles, /prefers-reduced-motion/);
   assert.match(styles, /position:sticky/);
+});
+
+test('bilingual routes and approved module order are present', async () => {
+  const shell = await readFile(new URL('../app/site-shell.tsx', import.meta.url), 'utf8');
+  assert.match(shell, /\/zh\//);
+  assert.match(shell, /\/en\//);
+  const explorer = await readFile(new URL('../app/research-explorer.tsx', import.meta.url), 'utf8');
+  assert.match(explorer, /festival[\s\S]+venue[\s\S]+ip[\s\S]+communication/);
 });
