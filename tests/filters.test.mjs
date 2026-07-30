@@ -7,6 +7,11 @@ const fixtures = [
   { id: 'b', name: 'Beta Creator', category: 'creator', subcategory: 'creator', dateStatus: 'pending_announcement', recommendation: 2, influence: { score: 4 }, location: 'Brazil' }
 ];
 
+const hotelFixtures = [
+  { id: 'h1', name: 'City Hotel', category: 'hotel', subcategory: 'main_hotel', hotelRole: 'main_hotel', dateStatus: 'pending_announcement', recommendation: 3, influence: { score: 4 }, location: 'Rio' },
+  { id: 'h2', name: 'Beach Resort', category: 'hotel', subcategory: 'resort_hotel', hotelRole: 'resort_hotel', dateStatus: 'pending_announcement', recommendation: 3, influence: { score: 5 }, location: 'Rio' }
+];
+
 test('filters categories without mixing creators into media', () => {
   assert.deepEqual(filterItems(fixtures, { category: 'media' }).map((item) => item.id), ['a']);
 });
@@ -26,4 +31,9 @@ test('favorites combine with category and query filters', () => {
     query: 'creator'
   });
   assert.deepEqual(result.map((item) => item.id), []);
+});
+
+test('filters hotels by their explicit role', () => {
+  assert.deepEqual(filterItems(hotelFixtures, { hotelRole: 'resort_hotel' }).map((item) => item.id), ['h2']);
+  assert.deepEqual(filterItems(hotelFixtures, { hotelRole: 'all' }).map((item) => item.id), hotelFixtures.map((item) => item.id));
 });

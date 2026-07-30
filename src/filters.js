@@ -2,6 +2,7 @@ export function filterItems(items, state = {}) {
   return items.filter((item) => {
     if (state.category && state.category !== 'all' && item.category !== state.category) return false;
     if (state.subcategory && state.subcategory !== 'all' && item.subcategory !== state.subcategory) return false;
+    if (state.hotelRole && state.hotelRole !== 'all' && item.hotelRole !== state.hotelRole) return false;
     if (state.dateStatus && state.dateStatus !== 'all' && item.dateStatus !== state.dateStatus) return false;
     if (state.influence && state.influence !== 'all' && item.influence?.level !== state.influence) return false;
     if (state.recommendation && state.recommendation !== 'all' && Number(item.recommendation) !== Number(state.recommendation)) return false;
