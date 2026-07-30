@@ -54,7 +54,7 @@ const labels = {
     automotive: '汽车', travel_lifestyle: '旅行与生活方式', sports: '体育', entertainment_music: '演艺与音乐', procurement: '采购前需再次确认档期、价格、权益与排他。', imageRights: '图片使用说明', close: '关闭资源详情',
     venueLink: '对应项目场地', allVenueLinks: '全部场地配套', linkedVenue: '正在查看该场地的配套酒店', clearLink: '清除关联', viewHotels: '查看配套酒店', distance: '道路距离', normalTraffic: '正常交通预计', route: '查看路线 ↗', publicRooms: '公开客房数', rooms: '间', roomPlan: '700间解决方式', beachRelation: '沙滩关系', eventCapability: '会务与接待', brandBuild: '品牌搭建初判', hotelConnections: '对应场地距离', trafficCaveat: '公里数和车程为公开路线的正常交通计划值；活动日须结合高峰、封路和大巴路测复核。公开客房量不等于2026年11月可售库存。',
     partnershipType: '合作类别', food_retail: '餐饮与即时零售', beach_lifestyle: '沙滩生活方式', outdoor_camping: '户外与露营', sports_lifestyle: '运动生活方式', travel_mobility: '航空旅行与出行', barter: '可争取置换资源',
-    main_hotel: '主酒店', vip_hotel: 'VIP酒店', support_hotel: '补充酒店', resort_hotel: '度假型酒店', resourceChecked: '资料核验',
+    main_hotel: '主酒店', vip_hotel: 'VIP酒店', support_hotel: '补充酒店', resort_hotel: '度假型酒店', hotelType: '酒店类型', allHotels: '全部酒店', resortFilter: '度假型酒店', resourceChecked: '资料核验',
   },
   en: {
     all: 'All', result: 'results', search: 'Search', searchPlaceholder: 'Name, location or tag…', type: 'Type', scene: 'Setting', status: 'Date status', sort: 'Sort', country: 'Country / Region', vertical: 'Creator vertical',
@@ -66,7 +66,7 @@ const labels = {
     automotive: 'Automotive', travel_lifestyle: 'Travel & lifestyle', sports: 'Sports', entertainment_music: 'Entertainment & music', procurement: 'Refresh availability, pricing, rights and exclusivity before procurement.', imageRights: 'Image note', close: 'Close resource profile',
     venueLink: 'Linked venue', allVenueLinks: 'All venue links', linkedVenue: 'Supporting hotels for this venue', clearLink: 'Clear link', viewHotels: 'View supporting hotels', distance: 'Road distance', normalTraffic: 'Normal-traffic estimate', route: 'View route ↗', publicRooms: 'Published rooms', rooms: 'rooms', roomPlan: '700-room approach', beachRelation: 'Beach relationship', eventCapability: 'Meetings & hospitality', brandBuild: 'Brand-build assessment', hotelConnections: 'Venue connections', trafficCaveat: 'Distances and drive times are normal-traffic planning values from public routes. Re-test peak traffic, road closures and coaches for event day. Published rooms are not November 2026 availability.',
     partnershipType: 'Partnership category', food_retail: 'Food & instant retail', beach_lifestyle: 'Beach lifestyle', outdoor_camping: 'Outdoor & camping', sports_lifestyle: 'Sports lifestyle', travel_mobility: 'Travel & mobility', barter: 'Potential barter resources',
-    main_hotel: 'Main hotel', vip_hotel: 'VIP hotel', support_hotel: 'Support hotel', resort_hotel: 'Resort hotel', resourceChecked: 'Research checked',
+    main_hotel: 'Main hotel', vip_hotel: 'VIP hotel', support_hotel: 'Support hotel', resort_hotel: 'Resort hotel', hotelType: 'Hotel Type', allHotels: 'All Hotels', resortFilter: 'Resort', resourceChecked: 'Research checked',
   },
 };
 
@@ -113,6 +113,7 @@ export function ResearchExplorer({ locale }: { locale: Locale }) {
   const [creatorVertical, setCreatorVertical] = useState('all');
   const [country, setCountry] = useState('all');
   const [dateStatus, setDateStatus] = useState('all');
+  const [hotelRole, setHotelRole] = useState('all');
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState('recommended');
   const [onlyFavorites, setOnlyFavorites] = useState(false);
@@ -133,7 +134,7 @@ export function ResearchExplorer({ locale }: { locale: Locale }) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { cards.forEach((card) => card.classList.add('is-visible')); return; }
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { rootMargin: '80px 0px' });
     cards.forEach((card) => observer.observe(card)); return () => observer.disconnect();
-  }, [module, subcategory, creatorVertical, country, dateStatus, query, sort, onlyFavorites]);
+  }, [module, subcategory, creatorVertical, country, dateStatus, hotelRole, query, sort, onlyFavorites]);
 
   const active = moduleList.find((entry) => entry.id === module) || moduleList[0];
   const moduleItems = useMemo(() => catalog.filter((entry) => module === 'communication' ? ['media', 'creator'].includes(entry.category) : entry.category === module), [catalog, module]);
@@ -149,10 +150,10 @@ export function ResearchExplorer({ locale }: { locale: Locale }) {
     if (module === 'hotel' && linkedVenueId) base = hotelsForVenue(base, linkedVenueId);
     if (country !== 'all') base = base.filter((item) => item.geography.country === country);
     if (creatorVertical !== 'all') base = base.filter((item) => item.category === 'creator' && item.creatorVertical === creatorVertical);
-    return selectItems(base, { subcategory, dateStatus: ['hotel', 'beach_case', 'partnership'].includes(module) ? 'all' : dateStatus, query, sort, favoriteIds, onlyFavorites });
-  }, [moduleItems, module, linkedVenueId, country, creatorVertical, subcategory, dateStatus, query, sort, favoriteIds, onlyFavorites]);
+    return selectItems(base, { subcategory, hotelRole: module === 'hotel' ? hotelRole : 'all', dateStatus: ['hotel', 'beach_case', 'partnership'].includes(module) ? 'all' : dateStatus, query, sort, favoriteIds, onlyFavorites });
+  }, [moduleItems, module, linkedVenueId, country, creatorVertical, subcategory, dateStatus, hotelRole, query, sort, favoriteIds, onlyFavorites]);
 
-  function switchModule(id: string) { setModule(id); setLinkedVenueId(null); setSubcategory('all'); setCreatorVertical('all'); setCountry('all'); setDateStatus('all'); setQuery(''); }
+  function switchModule(id: string) { setModule(id); setLinkedVenueId(null); setSubcategory('all'); setCreatorVertical('all'); setCountry('all'); setDateStatus('all'); setHotelRole('all'); setQuery(''); }
   function closeDialog() { dialogRef.current?.close(); setSelected(null); }
   function toggleFavorite(id: string) { setFavoriteIds((current) => toggleFavoriteId(current, id)); }
   function showHotelsForVenue(venueId: string) {
@@ -165,6 +166,7 @@ export function ResearchExplorer({ locale }: { locale: Locale }) {
     setCreatorVertical('all');
     setCountry('all');
     setDateStatus('all');
+    setHotelRole('all');
     setQuery('');
     window.setTimeout(() => explorerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 0);
   }
@@ -178,6 +180,7 @@ export function ResearchExplorer({ locale }: { locale: Locale }) {
       {module === 'communication' && <label><span>{t.type}</span><select value={subcategory} onChange={(e) => { setSubcategory(e.target.value); if (e.target.value !== 'creator') setCreatorVertical('all'); }}><option value="all">{t.allCommunication}</option><option value="mainstream_media">{t.mainstream_media}</option><option value="industry_media">{t.industry_media}</option><option value="creator">{t.creator}</option></select></label>}
       {module === 'ip' && <label><span>{t.type}</span><select value={subcategory} onChange={(e) => setSubcategory(e.target.value)}><option value="all">{t.all}</option><option value="sports_ip">{t.sports_ip}</option><option value="entertainment_ip">{t.entertainment_ip}</option></select></label>}
       {module === 'venue' && <label><span>{t.scene}</span><select value={subcategory} onChange={(e) => setSubcategory(e.target.value)}><option value="all">{t.all}</option><option value="outdoor">{t.outdoor}</option><option value="indoor">{t.indoor}</option><option value="beach">{t.beach}</option></select></label>}
+      {module === 'hotel' && <label><span>{t.hotelType}</span><select value={hotelRole} onChange={(e) => setHotelRole(e.target.value)}><option value="all">{t.allHotels}</option><option value="main_hotel">{t.main_hotel}</option><option value="vip_hotel">{t.vip_hotel}</option><option value="support_hotel">{t.support_hotel}</option><option value="resort_hotel">{t.resortFilter}</option></select></label>}
       {module === 'hotel' && <label><span>{t.venueLink}</span><select value={linkedVenueId || 'all'} onChange={(e) => setLinkedVenueId(e.target.value === 'all' ? null : e.target.value)}><option value="all">{t.allVenueLinks}</option>{hotelVenueOptions.map((venue) => <option key={venue.id} value={venue.id}>{venue.name}</option>)}</select></label>}
       {module === 'partnership' && <label><span>{t.partnershipType}</span><select value={subcategory} onChange={(e) => setSubcategory(e.target.value)}><option value="all">{t.all}</option><option value="food_retail">{t.food_retail}</option><option value="beach_lifestyle">{t.beach_lifestyle}</option><option value="outdoor_camping">{t.outdoor_camping}</option><option value="sports_lifestyle">{t.sports_lifestyle}</option><option value="travel_mobility">{t.travel_mobility}</option></select></label>}
       {module === 'communication' && <label><span>{t.vertical}</span><select value={creatorVertical} onChange={(e) => { setCreatorVertical(e.target.value); if (e.target.value !== 'all') setSubcategory('creator'); }}><option value="all">{t.allVerticals}</option><option value="automotive">{t.automotive}</option><option value="travel_lifestyle">{t.travel_lifestyle}</option><option value="sports">{t.sports}</option><option value="entertainment_music">{t.entertainment_music}</option></select></label>}

@@ -72,3 +72,12 @@ test('bilingual routes and approved module order are present', async () => {
   assert.match(explorer, /查看配套酒店/);
   assert.match(explorer, /View supporting hotels/);
 });
+
+test('hotel support exposes a bilingual role filter including Resort', async () => {
+  const explorer = await readFile(new URL('../app/research-explorer.tsx', import.meta.url), 'utf8');
+  for (const copy of ['酒店类型', '全部酒店', '度假型酒店', 'Hotel Type', 'All Hotels', 'Resort']) {
+    assert.match(explorer, new RegExp(copy));
+  }
+  assert.match(explorer, /hotelRole/);
+  assert.match(explorer, /value="resort_hotel"/);
+});
