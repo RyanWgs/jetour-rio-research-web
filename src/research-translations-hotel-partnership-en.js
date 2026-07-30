@@ -92,7 +92,7 @@ export const hotelPartnershipEnglishTranslations = {
   },
   'hotel-sheraton-grand-rio': {
     name: 'Sheraton Grand Rio Hotel & Resort', location: 'Leblon / Vidigal · Rio de Janeiro',
-    introduction: 'One of Rio’s few true beachfront resorts, with 538 rooms, direct beach access, pools and landscaped grounds—closest to the requested integrated resort model.',
+    introduction: 'One of Rio’s few beachfront resorts with direct beach access, 538 rooms, pools and landscaped grounds, allowing accommodation, beach experiences and small-format events to be concentrated within one property.',
     influenceBasis: '538 rooms and official direct beach access, making it Rio’s strongest resort-format candidate.',
     relevance: 'Supports the Ipanema/Arpoador, Jockey Club and Parque Lage programme lines.',
     activation: 'Resort main hotel, beach ceremony, pool welcome, VIP hospitality and small music content.',

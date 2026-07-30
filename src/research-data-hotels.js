@@ -208,7 +208,7 @@ export const hotelResearchItems = [
     eventCapability: '拥有热带园林、泳池、海滩和商务活动设施，最符合“酒店与沙滩连在一起”的方向。',
     brandBuildAssessment: '园区一体化优于城市海滨酒店；大型音乐、展车、结构搭建和沙滩封闭仍需工程与许可审批。',
     influence: { level: '极高', score: 5, basis: '538间客房及官方直接海滩通道，是里约最接近完整resort模式的候选。' },
-    introduction: 'Sheraton Grand Rio是里约少数真正拥有直接海滩通道的海滨度假村，538间客房、泳池和园林使其最接近老板提出的resort一体化方向。',
+    introduction: 'Sheraton Grand Rio是里约少数拥有直接海滩通道的海滨度假村之一，设有538间客房、泳池与热带园林，可将住宿、海滩体验及小型活动集中在同一酒店园区内。',
     relevance: '可服务Ipanema/Arpoador、Jockey Club和Parque Lage的南区项目线。',
     activation: '度假型主酒店、海滩仪式、泳池欢迎会、VIP接待和小型音乐内容。',
     risks: '单体仍不足700间；Avenida Niemeyer交通、沙滩演出许可、噪声及大型结构搭建必须实勘和书面确认。',

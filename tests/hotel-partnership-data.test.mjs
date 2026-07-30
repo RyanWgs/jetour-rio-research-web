@@ -52,3 +52,17 @@ test('every new resource has complete English copy', () => {
     assert.ok(Array.isArray(translation.tags) && translation.tags.every((tag) => !han.test(tag)), item.id);
   }
 });
+
+test('hotel introductions use public-facing language rather than internal brief language', () => {
+  const internalChinese = /老板|领导提出|客户要求|内部需求/;
+  const internalEnglish = /\b(?:boss|client request|requested|internal brief)\b/i;
+
+  for (const hotel of hotelResearchItems) {
+    assert.doesNotMatch(hotel.introduction, internalChinese, hotel.id);
+    assert.doesNotMatch(
+      hotelPartnershipEnglishTranslations[hotel.id].introduction,
+      internalEnglish,
+      hotel.id,
+    );
+  }
+});
